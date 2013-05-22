@@ -77,7 +77,7 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
-	console.log(req);		
+	console.log(req.body);		
 	console.log('!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
