@@ -78,6 +78,26 @@ app.configure('production', function(){
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
 	console.log(req.body);
+	console.log('!!!!!!!!!!!!!!!!!!');
+	console.log(req.body.headers.Subject);
+	console.log(req.body.headers.From);
+	console.log('!!!!!!!!!!!!!!!!!!');
+	
+	//send an e-mail to jim rubenstein
+	mandrill('/messages/send', {
+		message: {
+			to: [{email: 'koosmann@gmail.com'}],
+			from_email: 'hello@promiser.com',
+			subject: "You have been sent a Promise.",
+			text: "Do you accept?"
+		}
+	}, function (error, response) {
+		//uh oh, there was an error
+		if (error) console.log( JSON.stringify(error) );
+	
+		//everything's good, lets see what mandrill said
+		else console.log(response);
+	});
 	
 	res.status(200);
 	res.send('success');
