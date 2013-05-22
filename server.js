@@ -77,7 +77,15 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
-	console.log(req.body);		
+	//console.log(req.body);	
+	console.log("req.body.headers.subject: %s", req.body.headers.subject);
+	console.log("req.body.headers.Subject: %s", req.body.headers.Subject);
+	console.log("req.body.headers.To: %s", req.body.headers.To);
+	console.log("req.body.headers.to: %s", req.body.headers.to);
+	console.log("req.body.subject: %s", req.body.subject);
+	console.log("req.body.Subject: %s", req.body.Subject);
+	console.log("req.body.To: %s", req.body.To);
+	console.log("req.body.to: %s", req.body.to);
 	console.log('!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
