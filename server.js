@@ -24,10 +24,7 @@ var	https = require('https'),
 	server = http.createServer(app),
 
 // Mandrill
-	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg'),
-	
-// Formidable
-	formidable = require('formidable');
+	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg');	
 
 ///////////////////
 // Configuration //
