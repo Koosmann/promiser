@@ -80,6 +80,7 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
+	console.log(req.body);
 	
 	var form = new formidable.IncomingForm()
 	form.parse(req, function(err, fields, files) {
