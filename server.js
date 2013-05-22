@@ -99,7 +99,7 @@ app.post('/', function (req, res) {
 			res.writeHead(200, {'content-type': 'text/plain'})
 			res.end('Message Sent. Thanks!\r\n')
 		}
-	});*/
+	});
 });
 
 app.get('/', function (req, res) {
