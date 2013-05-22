@@ -18,7 +18,7 @@ var simplesmtp = require('simplesmtp'),
 						debug: true
 					},
 	smtp = simplesmtp.createServer(serverOptions);
-	//client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
+	client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
 
 smtp.listen(port, function (err) {
 	if (!err) {
@@ -45,7 +45,7 @@ smtp.on("startData", function(connection){
 });
 
 smtp.on("data", function(connection, chunk){
-    connection.saveStream.write(chunk);
+    //connection.saveStream.write(chunk);
 });
 
 smtp.on("dataReady", function(connection, callback){
