@@ -81,12 +81,12 @@ app.post('/', function (req, res) {
 	console.log('!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
-	/*mandrill('/messages/send', {
+	mandrill('/messages/send', {
 		message: {
-			to: [],
+			to: ['koosmann@gmail.com'],
 			from_email: 'hello@promiser.com',
 			subject:  + "has sent you have been sent a Promise.",
-			text: "Do you accept?"
+			text: req.body
 		}
 	}, function (error, response) {
 		//uh oh, there was an error
