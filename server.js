@@ -5,7 +5,7 @@ var simplesmtp = require('simplesmtp'),
 	serverOptions = {
 						name: 'Promiserver',
 						SMTPBanner: '~ Promiser v0 ~', 
-						host: '127.0.0.1', 
+						host: 'promiser.herokuapp.com', 
 						port: port,
 						ignoreTLS: true,
 						debug: true,
@@ -18,7 +18,7 @@ var simplesmtp = require('simplesmtp'),
 						debug: true
 					},
 	smtp = simplesmtp.createServer(serverOptions),
-	client = simplesmtp.connect(port, '127.0.0.1', clientOptions);
+	client = simplesmtp.connect(port, 'promiser.herokuapp.com', clientOptions);
 
 smtp.listen(port, function (err) {
 	if (!err) {
