@@ -21,7 +21,10 @@ var	https = require('https'),
 // Express
 	express = require('express'),
 	app = express(),
-	server = http.createServer(app);
+	server = http.createServer(app),
+
+// Mandrill
+	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg');
 
 ///////////////////
 // Configuration //
@@ -74,12 +77,15 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
+	console.log(req.body);
 	
 	res.status(200);
 	res.send('success');
 });
 
 app.get('/', function (req, res) {
+	console.log('homepage!');
+	
 	res.send('Welcome to Promiser!');
 });
 
