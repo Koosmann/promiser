@@ -82,10 +82,14 @@ app.post('/', function (req, res) {
 	console.log("req.body.headers.Subject: %s", req.body.headers.Subject);
 	console.log("req.body.headers.To: %s", req.body.headers.To);
 	console.log("req.body.headers.to: %s", req.body.headers.to);
+	console.log("req.body.headers.From: %s", req.body.headers.From);
+	console.log("req.body.headers.from: %s", req.body.headers.from);
 	console.log("req.body.subject: %s", req.body.subject);
 	console.log("req.body.Subject: %s", req.body.Subject);
 	console.log("req.body.To: %s", req.body.To);
 	console.log("req.body.to: %s", req.body.to);
+	console.log("req.body.From: %s", req.body.From);
+	console.log("req.body.from: %s", req.body.from);
 	console.log('!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
@@ -93,7 +97,7 @@ app.post('/', function (req, res) {
 		message: {
 			to: [{email: req.body.headers.Subject}],
 			from_email: 'hello@promiser.com',
-			subject:  req.body.headers.from + "has sent you a Promise.",
+			subject:  req.body.headers.From + "has sent you a Promise.",
 			text: "Do you accept?"
 		}
 	}, function (error, response) {
