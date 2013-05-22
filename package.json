@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    	"simplesmtp": "0.3.0",
-    	"nodemailer": "0.4.3"
+    	"express": "3.2.0",
+    	"connect-powered-by": "0.1.x"
   },
   "engines": {
     	"node": "0.10.4",

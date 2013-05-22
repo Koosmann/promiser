@@ -1,81 +1,92 @@
-var simplesmtp = require('simplesmtp'),
-	fs = require('fs'),
+/* 
+
+~~ Promier ~~
+
+*/
+
+//////////////////
+// Dependencies //
+//////////////////
+
+// NodeJS Utilities
+var	https = require('https'),
+	http = require("http"),
+	url = require('url'),
+	path = require('path'),
+
+// Environment Configuration
+	env = process.env.NODE_ENV || 'development',
 	port = process.env.PORT || 3000,
-	nodemailer = require('nodemailer'),
-	serverOptions = {
-						name: 'Promiserver',
-						SMTPBanner: '~ Promiser v0 ~', 
-						host: 'http://promiser.herokuapp.com', 
-						port: port,
-						ignoreTLS: true,
-						debug: true,
-						disableDNSValidation: true,
-						timeout: 60000*10
-					},
-	clientOptions = {
-						name: 'Promisender', 
-						ignoreTLS: true, 
-						debug: true
-					},
-	smtp = simplesmtp.createServer(serverOptions),
-	client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
 
-smtp.listen(port, function (err) {
-	if (!err) {
-		console.log('Started server on port %s', port);
-				
-		/*client.once("idle", function(){
-			console.log('Sending Mail');
+// Express
+	express = require('express'),
+	app = express(),
+	server = http.createServer(app);
 
-			client.useEnvelope({
-				from: "test@promiser.com",
-				to: ["koosmann@gmail.com"]
-			});
-		});*/
+///////////////////
+// Configuration //
+///////////////////
 
-	} else {
-		console.log('Could not start server because %s... typical...', err);
-	}
-});
-
-smtp.on("startData", function(connection){
-    console.log("Message from:", connection.from);
-    console.log("Message to:", connection.to);
-    //connection.saveStream = fs.createWriteStream("./messages/message.txt");
-});
-
-smtp.on("data", function(connection, chunk){
-    //connection.saveStream.write(chunk);
-});
-
-smtp.on("dataReady", function(connection, callback){
-    //connection.saveStream.end();
-    console.log(connection);
-    console.log("Incoming message saved to /messages/message.txt");
-    callback(null, "ABC1"); // ABC1 is the queue id to be advertised to the client
-    // callback(new Error("Rejected as spam!")); // reported back to the client
-});
-
-
-/*client.on("rcptFailed", function(addresses){
-	console.log("The following addresses were rejected: ", addresses);
-});
-
-client.on("message", function(){
-	console.log("Sending!");
-	console.log(client);
-	client.write("From: test@promiser.com\r\nTo: koosmann@gmail.com\r\nSubject: test\r\n\r\nHello World!");
-	client.end();
-});
-
-client.on("ready", function(success, response){
-	if (success) {
-		client.end();
-		console.log("The message was transmitted successfully with " + response);
-	}
-});
-
-client.on("error", function(err){
-	if (err)
+app.configure(function(){
+	
+	// Other Middleware
+	
+	app.use(express.favicon());
+	app.use(express.bodyParser());
+	//app.use(express.methodOverride());
+	
+	// Routing
+	
+	//app.use(express.static(config.root + '/public'));
+	app.use(express.cookieParser());
+	app.use(express.session({secret: 'keyboard cat' }));
+	app.use(app.router);
+	/* app.use(function(req, res) {
+		
+		// Use res.sendFile, as it streams instead of reading the file into memory.
+		
+		res.type('text/html');
+		res.sendfile(config.root + '/public/index.html');
+	}); */
+	
+	// Handle Errors
+	app.use(function(err, req, res, next){
 		console.log(err);
-});*/
+		res.status(500);
+		res.redirect('/error');
+	});
+
+
+});
+
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.use(express.logger('dev'));
+});
+
+app.configure('production', function(){
+  app.use(express.errorHandler());
+});
+
+////////////
+// Routes //
+////////////
+
+app.post('/', function (req, res) {
+	console.log('incoming email!!!!');
+	
+	res.status(200);
+	res.send('success');
+});
+
+app.get('/', function (req, res) {
+	res.send('Welcome to Promiser!');
+});
+
+//////////////////
+// Start Server //
+//////////////////
+
+server.listen(port, function(){
+	console.log("Express server listening on port %d in %s mode", this.address().port, env);
+});
