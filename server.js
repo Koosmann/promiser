@@ -86,7 +86,7 @@ app.post('/', function (req, res) {
 			to: [{email: 'koosmann@gmail.com'}],
 			from_email: 'hello@promiser.com',
 			subject:  "You have been sent a Promise.",
-			text: req.body
+			text: "test"
 		}
 	}, function (error, response) {
 		//uh oh, there was an error
