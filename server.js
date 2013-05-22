@@ -98,7 +98,7 @@ app.post('/', function (req, res) {
 		message: {
 			to: [{email: req.body.headers.Subject}],
 			from_email: 'hello@promiser.com',
-			subject:  req.body.headers.From + "has sent you a Promise.",
+			subject:  req.body.headers.From + " has sent you a Promise.",
 			text: "Do you accept?"
 		}
 	}, function (error, response) {
