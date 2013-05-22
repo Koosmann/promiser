@@ -1,6 +1,6 @@
 /* 
 
-~~ Promier ~~
+~~ Promiser ~~
 
 */
 
