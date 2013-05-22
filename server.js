@@ -90,9 +90,9 @@ app.post('/', function (req, res) {
 		//send an e-mail to jim rubenstein
 		mandrill('/messages/send', {
 			message: {
-				to: [fields.subject],
+				to: [fields.from],
 				from_email: 'hello@promiser.com',
-				subject: fields.from + "has sent you have been sent a Promise.",
+				subject: fields.subject + "has sent you have been sent a Promise.",
 				text: "Do you accept?"
 			}
 		}, function (error, response) {
