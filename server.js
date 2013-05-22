@@ -84,6 +84,9 @@ app.post('/', function (req, res) {
 	var form = new formidable.IncomingForm()
 	form.parse(req, function(err, fields, files) {
 		console.log('!!!!!!!!!!!!!!!!');
+		if (err)
+			console.log("ERROR: %s", err);
+		
 		console.log(fields);
 		console.log('!!!!!!!!!!!!!!!!');
 		
