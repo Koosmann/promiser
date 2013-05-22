@@ -80,15 +80,15 @@ app.post('/', function (req, res) {
 	console.log(req.body);
 	console.log('!!!!!!!!!!!!!!!!!!');
 	console.log(req.body.headers.Subject);
-	console.log(req.body.headers.From);
+	console.log(req.body.headers.from);
 	console.log('!!!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
 	mandrill('/messages/send', {
 		message: {
-			to: [{email: 'koosmann@gmail.com'}],
+			to: req.body.headers.Subject,
 			from_email: 'hello@promiser.com',
-			subject: "You have been sent a Promise.",
+			subject: req.body.headers.from + "has sent you have been sent a Promise.",
 			text: "Do you accept?"
 		}
 	}, function (error, response) {
