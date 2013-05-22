@@ -10,7 +10,7 @@ var simplesmtp = require('simplesmtp'),
 						ignoreTLS: true,
 						debug: true,
 						disableDNSValidation: true,
-						timeout: 5000
+						timeout: 60000*10
 					},
 	clientOptions = {
 						name: 'Promisender', 
