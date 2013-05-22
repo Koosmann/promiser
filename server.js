@@ -5,7 +5,7 @@ var simplesmtp = require('simplesmtp'),
 	serverOptions = {
 						name: 'Promiserver',
 						SMTPBanner: '~ Promiser v0 ~', 
-						host: 'promiser.herokuapp.com', 
+						host: 'http://promiser.herokuapp.com', 
 						port: port,
 						ignoreTLS: true,
 						debug: true,
@@ -18,7 +18,7 @@ var simplesmtp = require('simplesmtp'),
 						debug: true
 					},
 	smtp = simplesmtp.createServer(serverOptions),
-	client = simplesmtp.connect(port, 'promiser.herokuapp.com', clientOptions);
+	//client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
 
 smtp.listen(port, function (err) {
 	if (!err) {
@@ -41,7 +41,7 @@ smtp.listen(port, function (err) {
 smtp.on("startData", function(connection){
     console.log("Message from:", connection.from);
     console.log("Message to:", connection.to);
-    connection.saveStream = fs.createWriteStream("./messages/message.txt");
+    //connection.saveStream = fs.createWriteStream("./messages/message.txt");
 });
 
 smtp.on("data", function(connection, chunk){
@@ -49,7 +49,7 @@ smtp.on("data", function(connection, chunk){
 });
 
 smtp.on("dataReady", function(connection, callback){
-    connection.saveStream.end();
+    //connection.saveStream.end();
     console.log(connection);
     console.log("Incoming message saved to /messages/message.txt");
     callback(null, "ABC1"); // ABC1 is the queue id to be advertised to the client
