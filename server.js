@@ -80,38 +80,29 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
-	console.log(req.body);
+	console.log(req);		
+	console.log('!!!!!!!!!!!!!!!!');
 	
-	var form = new formidable.IncomingForm()
-	form.parse(req, function(err, fields, files) {
-		console.log('!!!!!!!!!!!!!!!!');
-		if (err)
-			console.log("ERROR: %s", err);
-		
-		console.log(fields);
-		console.log('!!!!!!!!!!!!!!!!');
-		
-		//send an e-mail to jim rubenstein
-		mandrill('/messages/send', {
-			message: {
-				to: [fields.from],
-				from_email: 'hello@promiser.com',
-				subject: fields.subject + "has sent you have been sent a Promise.",
-				text: "Do you accept?"
-			}
-		}, function (error, response) {
-			//uh oh, there was an error
-			if (error) {
-				console.log( JSON.stringify(error));
-				res.send('error');
-			} else {
-				//everything's good, lets see what mandrill said
-				console.log(response);
-				res.writeHead(200, {'content-type': 'text/plain'})
-				res.end('Message Sent. Thanks!\r\n')
-			}
-		});
-	});
+	//send an e-mail to jim rubenstein
+	/*mandrill('/messages/send', {
+		message: {
+			to: [],
+			from_email: 'hello@promiser.com',
+			subject:  + "has sent you have been sent a Promise.",
+			text: "Do you accept?"
+		}
+	}, function (error, response) {
+		//uh oh, there was an error
+		if (error) {
+			console.log( JSON.stringify(error));
+			res.send('error');
+		} else {
+			//everything's good, lets see what mandrill said
+			console.log(response);
+			res.writeHead(200, {'content-type': 'text/plain'})
+			res.end('Message Sent. Thanks!\r\n')
+		}
+	});*/
 });
 
 app.get('/', function (req, res) {
