@@ -90,6 +90,7 @@ app.post('/', function (req, res) {
 	console.log("req.body.to: %s", req.body.to);
 	console.log("req.body.From: %s", req.body.From);
 	console.log("req.body.from: %s", req.body.from);
+	console.log("req.body.envelope.from: %s", req.body.envelope.from);
 	console.log('!!!!!!!!!!!!!!!!');
 	
 	//send an e-mail to jim rubenstein
