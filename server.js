@@ -17,7 +17,7 @@ var simplesmtp = require('simplesmtp'),
 						ignoreTLS: true, 
 						debug: true
 					},
-	smtp = simplesmtp.createServer(serverOptions),
+	smtp = simplesmtp.createServer(serverOptions);
 	//client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
 
 smtp.listen(port, function (err) {
@@ -57,7 +57,7 @@ smtp.on("dataReady", function(connection, callback){
 });
 
 
-client.on("rcptFailed", function(addresses){
+/*client.on("rcptFailed", function(addresses){
 	console.log("The following addresses were rejected: ", addresses);
 });
 
@@ -78,4 +78,4 @@ client.on("ready", function(success, response){
 client.on("error", function(err){
 	if (err)
 		console.log(err);
-});
+});*/
