@@ -83,7 +83,7 @@ app.post('/', function (req, res) {
 	//send an e-mail to jim rubenstein
 	mandrill('/messages/send', {
 		message: {
-			to: ['koosmann@gmail.com'],
+			to: [{email: 'koosmann@gmail.com'}],
 			from_email: 'hello@promiser.com',
 			subject:  + "has sent you have been sent a Promise.",
 			text: req.body
