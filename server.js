@@ -24,7 +24,10 @@ var	https = require('https'),
 	server = http.createServer(app),
 
 // Mandrill
-	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg');
+	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg'),
+	
+// Formidable
+	formidable = require('formidable');
 
 ///////////////////
 // Configuration //
@@ -77,30 +80,34 @@ app.configure('production', function(){
 
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
-	console.log(req.body);
-	console.log('!!!!!!!!!!!!!!!!!!');
-	console.log(req.body.headers.Subject);
-	console.log(req.body.headers.from);
-	console.log('!!!!!!!!!!!!!!!!!!');
 	
-	//send an e-mail to jim rubenstein
-	mandrill('/messages/send', {
-		message: {
-			to: req.body.headers.Subject,
-			from_email: 'hello@promiser.com',
-			subject: req.body.headers.from + "has sent you have been sent a Promise.",
-			text: "Do you accept?"
-		}
-	}, function (error, response) {
-		//uh oh, there was an error
-		if (error) console.log( JSON.stringify(error) );
-	
-		//everything's good, lets see what mandrill said
-		else console.log(response);
+	var form = new formidable.IncomingForm()
+	form.parse(req, function(err, fields, files) {
+		console.log('!!!!!!!!!!!!!!!!');
+		console.log(fields);
+		console.log('!!!!!!!!!!!!!!!!');
+		
+		//send an e-mail to jim rubenstein
+		mandrill('/messages/send', {
+			message: {
+				to: [fields.subject],
+				from_email: 'hello@promiser.com',
+				subject: fields.from + "has sent you have been sent a Promise.",
+				text: "Do you accept?"
+			}
+		}, function (error, response) {
+			//uh oh, there was an error
+			if (error) {
+				console.log( JSON.stringify(error));
+				res.send('error');
+			} else {
+				//everything's good, lets see what mandrill said
+				console.log(response);
+				res.writeHead(200, {'content-type': 'text/plain'})
+				res.end('Message Sent. Thanks!\r\n')
+			}
+		});
 	});
-	
-	res.status(200);
-	res.send('success');
 });
 
 app.get('/', function (req, res) {
