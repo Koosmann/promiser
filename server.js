@@ -17,7 +17,7 @@ var simplesmtp = require('simplesmtp'),
 						ignoreTLS: true, 
 						debug: true
 					},
-	smtp = simplesmtp.createServer(serverOptions);
+	smtp = simplesmtp.createServer(serverOptions),
 	client = simplesmtp.connect(port, 'http://promiser.herokuapp.com', clientOptions);
 
 smtp.listen(port, function (err) {
