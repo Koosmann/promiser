@@ -96,7 +96,7 @@ app.post('/', function (req, res) {
 	
 	var inbTo = req.body.headers.To,
 		inbFrom = req.body.envelope.from,
-		inbSubject = req.body.headers.To;
+		inbSubject = req.body.headers.Subject;
 	
 	var to, from, subject, text;
 	
