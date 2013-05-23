@@ -24,7 +24,8 @@ var	https = require('https'),
 	server = http.createServer(app),
 
 // Mandrill
-	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg');	
+	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg'),
+	email = require('./app/email')(mandrill);	
 
 ///////////////////
 // Configuration //
@@ -93,26 +94,42 @@ app.post('/', function (req, res) {
 	console.log("req.body.envelope.from: %s", req.body.envelope.from);
 	console.log('!!!!!!!!!!!!!!!!');
 	
-	//send an e-mail to jim rubenstein
-	mandrill('/messages/send', {
-		message: {
-			to: [{email: req.body.headers.Subject}],
-			from_email: 'hello@promiser.com',
-			subject:  req.body.headers.From + " has sent you a Promise.",
-			text: "Do you accept?"
-		}
-	}, function (error, response) {
-		//uh oh, there was an error
-		if (error) {
-			console.log( JSON.stringify(error));
-			res.send('error');
-		} else {
-			//everything's good, lets see what mandrill said
-			console.log(response);
-			res.writeHead(200, {'content-type': 'text/plain'})
-			res.end('Message Sent. Thanks!\r\n')
-		}
-	});
+	var inbTo = req.body.headers.To,
+		inbFrom = req.body.envelope.from,
+		inbSubject = req.body.headers.To;
+	
+	var to, from, subject, text;
+	
+	switch (inbSubject) {
+		case 'help':
+			console.log('sending help message');
+			
+			to = inbFrom;
+			from = 'hello@promiser.com';
+			subject = 'Here is your requested Promiser guide!';
+			text = 'To send a promise, email 143799a29acfc76df03e@cloudmailin.net with the recipient in the subject line.';
+			break;
+		default:
+			console.log('sending default message');
+			
+			to = inbSubject;
+			from = 'hello@promiser.com';
+			subject = inbFrom + ' has sent you a Promise.';
+			text = 'Do you accept?';
+			break;
+	}
+	
+	mandrill.send(to, from, subject, text, function () {
+		if (err) {
+			subject = 'There was an error with your request!';
+			text = 'Check your formatting and try again :)';
+			
+			mandrill.send(to, from, subject, text, function (err) {
+				if (err)
+					console.log('ERROR SEND FAILED: %s', err);	
+			});
+		} 
+	})
 });
 
 app.get('/', function (req, res) {
