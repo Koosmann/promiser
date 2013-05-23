@@ -11,8 +11,8 @@ module.exports = function (mandrill) {
 				message: {
 					to: [{email: to}],
 					from_email: from,
-					subject:  req.body.headers.From + " has sent you a Promise.",
-					text: "Do you accept?"
+					subject:  subject,
+					text: text
 				}
 			}, function (error, response) {
 				//uh oh, there was an error

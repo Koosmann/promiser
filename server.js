@@ -79,7 +79,7 @@ app.configure('production', function(){
 app.post('/', function (req, res) {
 	console.log('incoming email!!!!');
 	//console.log(req.body);	
-	console.log("req.body.headers.subject: %s", req.body.headers.subject);
+	/* console.log("req.body.headers.subject: %s", req.body.headers.subject);
 	console.log("req.body.headers.Subject: %s", req.body.headers.Subject);
 	console.log("req.body.headers.To: %s", req.body.headers.To);
 	console.log("req.body.headers.to: %s", req.body.headers.to);
@@ -91,45 +91,60 @@ app.post('/', function (req, res) {
 	console.log("req.body.to: %s", req.body.to);
 	console.log("req.body.From: %s", req.body.From);
 	console.log("req.body.from: %s", req.body.from);
-	console.log("req.body.envelope.from: %s", req.body.envelope.from);
+	console.log("req.body.envelope.from: %s", req.body.envelope.from); */
 	console.log('!!!!!!!!!!!!!!!!');
 	
-	var inbTo = req.body.headers.To,
-		inbFrom = req.body.envelope.from,
-		inbSubject = req.body.headers.Subject;
+	if ("headers" in req.body) {
 	
-	var to, from, subject, text;
+		var inbTo = req.body.headers.To,
+			inbFrom = req.body.envelope.from,
+			inbSubject = req.body.headers.Subject;
 	
-	switch (inbSubject) {
-		case 'help':
-			console.log('sending help message');
+		var to, from, subject, text;
+	
+		switch (inbSubject) {
+			case 'help':
+				console.log('sending help message');
+				
+				to = inbFrom;
+				from = 'hello@promiser.com';
+				subject = 'Here is your requested Promiser guide!';
+				text = 'To send a promise, email 143799a29acfc76df03e@cloudmailin.net with the recipient in the subject line.';
+				break;
+			default:
+				console.log('sending default message');
+				
+				to = inbSubject;
+				from = 'hello@promiser.com';
+				subject = inbFrom + ' has sent you a Promise.';
+				text = 'Do you accept?';
+				break;
+		}
+		
+		email.send(to, from, subject, text, function (err) {
+			if (err) {
+				subject = 'There was an error with your request!';
+				text = 'Check your formatting and try again :)';
+				
+				email.send(to, from, subject, text, function (err) {
+					if (err)
+						console.log('ERROR SEND FAILED: %s', err);	
+				});
+			} 
+		})
+	} else {
+		to = 'koosmann@gmail.com';
+		from = 'hello@promiser.com';
+		subject = 'There was an error with your request!';
+		text = 'Check your formatting and try again :)';
+		
+		email.send(to, from, subject, text, function (err) {
+			if (err)
+				console.log('ERROR SEND FAILED: %s', err);
 			
-			to = inbFrom;
-			from = 'hello@promiser.com';
-			subject = 'Here is your requested Promiser guide!';
-			text = 'To send a promise, email 143799a29acfc76df03e@cloudmailin.net with the recipient in the subject line.';
-			break;
-		default:
-			console.log('sending default message');
-			
-			to = inbSubject;
-			from = 'hello@promiser.com';
-			subject = inbFrom + ' has sent you a Promise.';
-			text = 'Do you accept?';
-			break;
+			res.send('success');
+		});
 	}
-	
-	mandrill.send(to, from, subject, text, function () {
-		if (err) {
-			subject = 'There was an error with your request!';
-			text = 'Check your formatting and try again :)';
-			
-			mandrill.send(to, from, subject, text, function (err) {
-				if (err)
-					console.log('ERROR SEND FAILED: %s', err);	
-			});
-		} 
-	})
 });
 
 app.get('/', function (req, res) {
