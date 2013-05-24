@@ -104,7 +104,7 @@ app.post('/', function (req, res) {
 	
 		switch (inbSubject) {
 			case 'help':
-				console.log('sending help message');
+				console.log('sending help message!');
 				
 				to = inbFrom;
 				from = 'hello@promiser.com';
@@ -112,7 +112,7 @@ app.post('/', function (req, res) {
 				text = 'To send a promise, email 143799a29acfc76df03e@cloudmailin.net with the recipient in the subject line.';
 				break;
 			default:
-				console.log('sending default message');
+				console.log('sending default message!');
 				
 				to = inbSubject;
 				from = 'hello@promiser.com';

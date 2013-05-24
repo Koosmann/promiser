@@ -18,8 +18,10 @@ module.exports = function (mandrill) {
 				//uh oh, there was an error
 				if (error) {
 					console.log( JSON.stringify(error));
-					return callback(error);
+					callback(error);
 				} else {
+				
+				
 					//everything's good, lets see what mandrill said
 					console.log(response);
 					return callback();
