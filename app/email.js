@@ -11,20 +11,20 @@ module.exports = function (mandrill) {
 				message: {
 					to: [{email: to}],
 					from_email: from,
-					subject:  subject,
+					subject: subject,
 					text: text
 				}
 			}, function (error, response) {
 				//uh oh, there was an error
 				if (error) {
 					console.log( JSON.stringify(error));
-					callback(error);
+					return callback(error, response);
 				} else {
-				
+					console.log('SENT -> NOW CALLBACK?');
 				
 					//everything's good, lets see what mandrill said
 					console.log(response);
-					return callback();
+					return callback(null, response);
 				}
 			});
 		}

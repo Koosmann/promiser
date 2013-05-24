@@ -94,11 +94,15 @@ app.post('/', function (req, res) {
 	console.log("req.body.envelope.from: %s", req.body.envelope.from); */
 	console.log('!!!!!!!!!!!!!!!!');
 	
-	if ("headers" in req.body) {
+	if (1) {
 	
-		var inbTo = req.body.headers.To,
+		/*var inbTo = req.body.headers.To,
 			inbFrom = req.body.envelope.from,
-			inbSubject = req.body.headers.Subject;
+			inbSubject = req.body.headers.Subject;*/
+			
+		var inbTo = 'hello',
+			inbFrom = 'test',
+			inbSubject = 'koosmann@gmail.com';
 	
 		var to, from, subject, text;
 	
@@ -120,17 +124,24 @@ app.post('/', function (req, res) {
 				text = 'Do you accept?';
 				break;
 		}
-		
-		email.send(to, from, subject, text, function (err) {
+		console.log('SENDING!');
+		email.send(to, from, subject, text, function (err, response) {
 			if (err) {
+				console.log('ERROR SEND FAILED: %s', err, response);
+				
 				subject = 'There was an error with your request!';
 				text = 'Check your formatting and try again :)';
 				
 				email.send(to, from, subject, text, function (err) {
 					if (err)
-						console.log('ERROR SEND FAILED: %s', err);	
+						console.log('ERROR SEND FAILED: %s', err, response);	
+					
+					res.send('error');
 				});
 			} 
+			
+			console.log('SENT!');
+			res.send('success');
 		})
 	} else {
 		to = 'koosmann@gmail.com';
@@ -138,10 +149,11 @@ app.post('/', function (req, res) {
 		subject = 'There was an error with your request!';
 		text = 'Check your formatting and try again :)';
 		
-		email.send(to, from, subject, text, function (err) {
+		email.send(to, from, subject, text, function (err, response) {
 			if (err)
 				console.log('ERROR SEND FAILED: %s', err);
 			
+			console.log('SENT ERROR!');
 			res.send('success');
 		});
 	}
