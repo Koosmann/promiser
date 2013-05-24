@@ -94,15 +94,15 @@ app.post('/', function (req, res) {
 	console.log("req.body.envelope.from: %s", req.body.envelope.from); */
 	console.log('!!!!!!!!!!!!!!!!');
 	
-	if (1) {
+	if (req.body) {
 	
-		/*var inbTo = req.body.headers.To,
-			inbFrom = req.body.envelope.from,
-			inbSubject = req.body.headers.Subject;*/
+		var inbTo = req.body.headers.To.toLowerCase(),
+			inbFrom = req.body.envelope.from.toLowerCase(),
+			inbSubject = req.body.headers.Subject.toLowerCase();
 			
-		var inbTo = 'hello',
+		/* var inbTo = 'hello',
 			inbFrom = 'test',
-			inbSubject = 'koosmann@gmail.com';
+			inbSubject = 'koosmann@gmail.com'; */
 	
 		var to, from, subject, text;
 	
