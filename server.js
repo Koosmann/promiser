@@ -170,6 +170,15 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
+app.get('/:id', function (req, res) {
+	console.log('homepage!');
+	
+	data = {};
+	data.id = req.params.id;
+	
+	res.render('agreement', {data: data});
+});
+
 //////////////////
 // Start Server //
 //////////////////
