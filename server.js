@@ -33,6 +33,11 @@ var	https = require('https'),
 
 app.configure(function(){
 	
+	// Templates
+		
+	app.set('views', __dirname + '/app/views');
+	app.set('view engine', 'ejs');
+	
 	// Other Middleware
 	
 	app.use(express.favicon());
@@ -41,7 +46,7 @@ app.configure(function(){
 	
 	// Routing
 	
-	//app.use(express.static(config.root + '/public'));
+	//app.use(express.static(__dirname + '/public'));
 	app.use(express.cookieParser());
 	app.use(express.session({secret: 'keyboard cat' }));
 	app.use(app.router);
@@ -162,7 +167,7 @@ app.post('/', function (req, res) {
 app.get('/', function (req, res) {
 	console.log('homepage!');
 	
-	res.send('Welcome to Promiser!');
+	res.render('index');
 });
 
 //////////////////
