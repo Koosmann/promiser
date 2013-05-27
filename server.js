@@ -38,18 +38,24 @@ app.configure(function(){
 	app.set('views', __dirname + '/app/views');
 	app.set('view engine', 'ejs');
 	
+
 	// Other Middleware
 	
 	app.use(express.favicon());
 	app.use(express.bodyParser());
 	//app.use(express.methodOverride());
 	
-	// Routing
 	
-	//app.use(express.static(__dirname + '/public'));
+	// Static Files
+	app.use('/assets', express.static(__dirname + '/public/assets'));
+	app.use(express.static(__dirname + '/public'));
+	// app.use("/styles", express.static(__dirname + '/styles'));
+
+	// Routing
 	app.use(express.cookieParser());
 	app.use(express.session({secret: 'keyboard cat' }));
 	app.use(app.router);
+	
 	/* app.use(function(req, res) {
 		
 		// Use res.sendFile, as it streams instead of reading the file into memory.
