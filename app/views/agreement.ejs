@@ -6,6 +6,13 @@
 </head>
 <body>
 	<h1>Promiser</h1>
-	<h4>Show agreement: <%= data.id %></h4>
+	<h4>Agreement ID: <%= data.id %></h4>
+	<h4>Intiator: <%= data.agreement.initiatorEmail %></h4>
+	<h4>Recipient: <%= data.agreement.recipientEmail %></h4>
+	<h4>Object: <%= data.agreement.object %></h4>
+	<h4>Terms: <%= data.agreement.terms %></h4>
+	<h4>Confirmation Date: <%= data.agreement.confirmationDate %></h4>
+	<h4>Due Date: <%= data.agreement.dueDate %></h4>
+	<h4>Confirmation Status: <%= data.agreement.confirmationStatus %></h4>
 </body>
 </html>
