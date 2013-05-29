@@ -43,7 +43,7 @@ module.exports = function (config, Agreement) {
 					data.agreement.dueDate = new Date();
 					data.agreement.object = 'TEST OBJECT';
 					data.agreement.terms = 'These are the terms.';
-					data.agreement.confirmationStatus = false;
+					data.agreement.confirmationStatus = true;
 				}
 
 				res.render('agreement', {data: data});

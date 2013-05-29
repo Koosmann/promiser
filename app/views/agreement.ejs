@@ -11,8 +11,13 @@
 	<h4>Recipient: <%= data.agreement.recipientEmail %></h4>
 	<h4>Object: <%= data.agreement.object %></h4>
 	<h4>Terms: <%= data.agreement.terms %></h4>
-	<h4>Confirmation Date: <%= data.agreement.confirmationDate %></h4>
 	<h4>Due Date: <%= data.agreement.dueDate %></h4>
+	
+	<br />
 	<h4>Confirmation Status: <%= data.agreement.confirmationStatus %></h4>
+
+	<% if (data.agreement.confirmationStatus) { %>
+		<p>Confirmation Date: <%= data.agreement.confirmationDate %></p>
+	<% } %>
 </body>
 </html>
