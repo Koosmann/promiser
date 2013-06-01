@@ -28,7 +28,7 @@ module.exports = function (mongoose) {
 		terms: { type: String, required: true, trim: true },
 
 		// Confirmation Status
-		confirmationStatus: { type: Boolean, default: false }
+		confirmationStatus: { type: String, default: "pending" }
 
 	});
 

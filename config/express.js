@@ -41,7 +41,7 @@ module.exports = function (app, express, config) {
 		app.use(function(err, req, res, next){
 			console.log(err);
 			res.status(500);
-			res.send('error');
+			res.send('500 error');
 		});
 
 

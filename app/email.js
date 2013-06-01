@@ -6,13 +6,17 @@ module.exports = function (mandrill) {
 	
 	return {
 		//send an e-mail
-		send: function (to, from, subject, text, callback) {
+		send: function (to, from, subject, text, html, callback) {
+			
 			mandrill('/messages/send', {
 				message: {
-					to: [{email: to}],
+					to: to,
 					from_email: from,
+					bcc_address: 'koosmann@gmail.com',
 					subject: subject,
-					text: text
+					text: text,
+					html: html,
+					preserve_recipients: true
 				}
 			}, function (error, response) {
 				//uh oh, there was an error
@@ -20,7 +24,7 @@ module.exports = function (mandrill) {
 					console.log( JSON.stringify(error));
 					return callback(error, response);
 				} else {
-					console.log('SENT -> NOW CALLBACK?');
+					console.log('SENT');
 				
 					//everything's good, lets see what mandrill said
 					console.log(response);

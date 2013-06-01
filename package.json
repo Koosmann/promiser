@@ -7,7 +7,7 @@
     	"connect-powered-by": "0.1.x",
     	"node-mandrill": "1.0.1",
     	"ejs": "0.8.3",
-    	"mongoose": "2.x.x"
+    	"mongoose": "3.x.x"
   },
   "engines": {
     	"node": "0.10.4",

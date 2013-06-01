@@ -2,13 +2,14 @@
 // Configuration //
 ///////////////////
 
-module.exports = function (path) {
+module.exports = function (path, port) {
 	rootPath = path.normalize(__dirname + '/..');
 	
 	return {
 		development: {
 			db: 'mongodb://localhost:27017/promiser',
 			root: rootPath,
+			host: 'http://localhost:' + port,
 			app: {
 				name: 'Dev - Promiser'
 			},
@@ -16,6 +17,7 @@ module.exports = function (path) {
 		staging: {
 			db: process.env.MONGOHQ_URL,
 			root: rootPath,
+			host: rootPath,
 			app: {
 				name: 'Stage - Promiser'
 			},
@@ -23,6 +25,7 @@ module.exports = function (path) {
 		production: {
 			db: '',
 			root: rootPath,
+			host: rootPath,
 			app: {
 				name: 'Promiser'
 			},

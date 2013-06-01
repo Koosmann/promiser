@@ -14,10 +14,10 @@ var	https = require('https'),
 	url = require('url'),
 	path = require('path'),
 
-// Environment Configuration
+// Environment
 	env = process.env.NODE_ENV || 'development',
 	port = process.env.PORT || 3000,
-	config = require('./config/config')(path)[env],
+	config = require('./config/config')(path, port)[env],
 
 // Express
 	express = require('express'),
@@ -35,7 +35,7 @@ var	https = require('https'),
 	Agreement = require('./app/models/Agreement')(mongoose),
 
 // Controllers
-	routes = require('./app/controllers')(config, Agreement),
+	routes = require('./app/controllers')(config, Agreement, email),
 
 
 ///////////////////
