@@ -96,7 +96,7 @@ module.exports = function (config, Agreement, email) {
 
 				var subject = agreement.initiatorEmail + ' has sent you a promise.',
 					text = 'Click here to accept: ' + config.root + '/confirm/' + agreement._id,
-					html = 'Do you accept?  <a href="' + config.host + '/confirm/' + agreement._id + '">Yes</a> / No"';  
+					html = 'Do you accept?  <a href="' + config.host + '/confirm/' + agreement._id + '">Yes</a> / No';  
 
 				email.send([{email: agreement.recipientEmail}], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
