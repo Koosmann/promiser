@@ -23,3 +23,8 @@ Run the db on 127.0.0.1
 Start the server:
 
 	$ node server.js
+
+
+## Misc Links
+
+* [MARKDOWN HELP GUIDE](https://help.github.com/articles/github-flavored-markdown)
