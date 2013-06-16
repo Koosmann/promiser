@@ -4,7 +4,7 @@
 
 module.exports = function (app, express, config) {
 
-	app.configure(function(){
+	app.configure(function () {
 		
 		// Templates
 			
@@ -48,11 +48,11 @@ module.exports = function (app, express, config) {
 	});
 
 	app.configure('development', function(){
-	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-	  app.use(express.logger('dev'));
+	  	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+	  	app.use(express.logger('dev'));
 	});
 
 	app.configure('production', function(){
-	  app.use(express.errorHandler());
+	  	app.use(express.errorHandler());
 	});
 }

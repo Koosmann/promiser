@@ -29,13 +29,20 @@ var	https = require('https'),
 
 // Mandrill
 	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg'),
-	email = require('./app/email')(mandrill);
+	email = require('./app/email')(mandrill),
+
+// Async
+	async = require('async'),
 
 // Models
 	Agreement = require('./app/models/Agreement')(mongoose),
 
+// Cron Jobs
+	cron = require('cron').CronJob,
+	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async),
+
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email),
+	routes = require('./app/controllers')(config, Agreement, email, reminders);
 
 
 ///////////////////
@@ -48,14 +55,16 @@ require('./config/express')(app, express, config);
 // Routing
 require('./config/routes')(app, routes);
 
-
-/////////////////////////
-// Database Connection //
-/////////////////////////
-
-// Mongoose to MongoDB
+// Database -> Mongoose to MongoDB
 require('./config/mongoose')(mongoose, config);
 
+
+//////////////////////////
+// Initialize Cron Jobs //
+//////////////////////////
+
+// Pull & Start Active Reminders
+reminders.init();
 
 //////////////////
 // Start Server //

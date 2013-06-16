@@ -19,7 +19,7 @@ Install MongoDB:
 
 	$ brew install mongodb
 
-Run the db on 127.0.0.1 
+Run the db on 127.0.0.1:
 
 	$ mongod
 

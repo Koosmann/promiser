@@ -2,7 +2,7 @@
 // Index //
 ///////////
 	
-module.exports = function (config, Agreement, email) {
+module.exports = function (config, Agreement, email, reminders) {
 	
 	return {
 		//////////////
@@ -73,7 +73,7 @@ module.exports = function (config, Agreement, email) {
 			agreement.recipientEmail = req.body.recipientEmail;
 			agreement.object = req.body.object;
 			agreement.terms = req.body.terms;
-			agreement.dueDate = new Date();
+			agreement.dueDate = new Date(Date.now() + 60000);
 
 			console.log(agreement);
 		
@@ -181,6 +181,9 @@ module.exports = function (config, Agreement, email) {
 									}
 
 								});
+
+								// Create reminder
+								reminders.create(agreement);
 
 								res.send('success');
 							});
