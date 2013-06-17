@@ -3,11 +3,8 @@
 * SET UP HOME PAGE EXAMPLE FORM
 * SET UP CONFIRMATINO EMAIL HTML
 * SET UP RECIEPT EMAIL HTML
-
 * SET UP AGREEMENT REJECTION
-
 * FIGURE OUT HOW AMENDING AN AGREEMENT SHOUD WORK
-
 
 ## Installation
 
@@ -26,3 +23,8 @@ Run the db on 127.0.0.1:
 Start the server:
 
 	$ node server.js
+
+
+## Misc Links
+
+* [MARKDOWN HELP GUIDE](https://help.github.com/articles/github-flavored-markdown)
