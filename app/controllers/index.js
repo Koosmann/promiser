@@ -73,9 +73,9 @@ module.exports = function (config, Agreement, email, reminders) {
 			agreement.recipientEmail = req.body.recipientEmail;
 			agreement.object = req.body.object;
 			agreement.terms = req.body.terms;
-			agreement.dueDate = new Date(Date.now() + 60000);
+			agreement.dueDate = new Date(Date.now() + req.body.daysFromNow);
 
-			console.log(agreement);
+			console.dir(agreement);
 		
 			agreement.save(function (err) {		
 				if (err) {
