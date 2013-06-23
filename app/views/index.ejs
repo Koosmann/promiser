@@ -54,7 +54,7 @@
 
                         <div class="borrow-form">
 
-                            <form action="">
+                            <form action="/create" method="post">
                                 <div class="control-group">
                                     <label for="from_field">From:</label>
                                     <input name="from_field" id="from_field" type="text">
@@ -66,10 +66,9 @@
                                 </div>
 
 
-
                                 <div class="control-group">
-                                    <label for="duedate_field">Due Date:</label>
-                                    <input name="duedate_field" id="duedate_field" type="text">
+                                    <label for="daysFromNow">Days from Now</label>
+                                    <input name="daysFromNow" id="daysFromNow" type="text">
                                 </div>
 
                                 <div class="control-group">
@@ -83,7 +82,7 @@
                                 </div>
                                 
                                 <div class="action-button">
-                                    <input name="submit" id="submit" class="cta" type="submit">
+                                    <input name="submit" id="submit" class="cta" type="submit" value="submit">
                                 </div>
 
                             </form>
