@@ -71,7 +71,7 @@ module.exports = function (config, Agreement, email, reminders) {
 				  
 			agreement.initiatorEmail = req.body.initiatorEmail;
 			agreement.recipientEmail = req.body.recipientEmail;
-			agreement.object = req.body.object;
+			agreement.object = req.body.subject;
 			agreement.terms = req.body.terms;
 			agreement.dueDate = new Date(Date.now() + req.body.daysFromNow);
 
@@ -98,7 +98,7 @@ module.exports = function (config, Agreement, email, reminders) {
 					text = 'Click here to accept: ' + config.root + '/confirm/' + agreement._id,
 					html = 'Do you accept?  <a href="' + config.host + '/confirm/' + agreement._id + '">Yes</a> / No';  
 
-				email.send([{email: agreement.recipientEmail}], 'hello@promiser.com', subject, text, html, function (err, response){
+				email.send([{email: agreement.recipientEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
 						console.log("-------------------");
 						console.log("Error! >> " + err);
