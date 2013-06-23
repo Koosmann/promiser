@@ -25,6 +25,9 @@
         <link rel="stylesheet" href="assets/css/nav.css">         
         <!--<![endif]-->
 
+     
+
+
         <!--[if (lt IE 9) & (!IEMobile)]>
         <link rel="stylesheet" href="css/ie.css">
         <![endif]-->
@@ -48,30 +51,44 @@
 
                     <div id="main" class="bg-grey set-left">           
 
-                        <form action="">
-                            <div class="control-group">
-                                <label for="from_field">From:</label>
-                                <input name="from_field" id="from_field" type="text">
-                            </div>
 
-                            <div class="control-group">
-                                <label for="to_field">To:</label>
-                                <input name="to_field" id="to_field" type="text">
+                        <div class="borrow-form">
 
-                            </div>
+                            <form action="">
+                                <div class="control-group">
+                                    <label for="from_field">From:</label>
+                                    <input name="from_field" id="from_field" type="text">
+                                </div>
 
-                            <div class="control-group">
-                                <label for="subject_field">Subject:</label>
-                                <input name="subject_field" id="subject_field" type="text">
-                            </div>
+                                <div class="control-group">
+                                    <label for="to_field">To:</label>
+                                    <input name="to_field" id="to_field" type="text">
+                                </div>
 
-                            <div class="control-group">
-                                <label for="from_field">Description:</label>
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
-                            </div>
+
+
+                                <div class="control-group">
+                                    <label for="duedate_field">Due Date:</label>
+                                    <input name="duedate_field" id="duedate_field" type="text">
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="subject_field">Subject:</label>
+                                    <input name="subject_field" id="subject_field" type="text">
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="description_field">Description:</label>
+                                    <textarea name="" id="description_field" cols="30" rows="10"></textarea>
+                                </div>
                                 
-                        </form>
+                                <div class="action-button">
+                                    <input name="submit" id="submit" class="cta" type="submit">
+                                </div>
 
+                            </form>
+
+                        </div>
 
 
 
