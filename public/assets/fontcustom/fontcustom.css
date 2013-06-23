@@ -1,0 +1,122 @@
+/* 
+ * Font Custom: bare CSS
+ */
+
+@font-face {
+  font-family: "fontcustom";
+  src: url("fontcustom_7ebd45048ccc3c4bdd90ca7da686b8d9.eot");
+  src: url("fontcustom_7ebd45048ccc3c4bdd90ca7da686b8d9.eot?#iefix") format("embedded-opentype"),
+       url("fontcustom_7ebd45048ccc3c4bdd90ca7da686b8d9.woff") format("woff"),
+       url("fontcustom_7ebd45048ccc3c4bdd90ca7da686b8d9.ttf") format("truetype"),
+       url("fontcustom_7ebd45048ccc3c4bdd90ca7da686b8d9.svg#fontcustom") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.defaultbanknote:before,
+.defaultbubble:before,
+.defaultbulb:before,
+.defaultcalendar:before,
+.defaultcamera:before,
+.defaultclip:before,
+.defaultclock:before,
+.defaultcloud:before,
+.defaultcup:before,
+.defaultdata:before,
+.defaultdiamond:before,
+.defaultdisplay:before,
+.defaulteye:before,
+.defaultfire:before,
+.defaultfood:before,
+.defaultheart:before,
+.defaultkey:before,
+.defaultlab:before,
+.defaultlike:before,
+.defaultlocation:before,
+.defaultlock:before,
+.defaultmail:before,
+.defaultmegaphone:before,
+.defaultmusic:before,
+.defaultnews:before,
+.defaultnote:before,
+.defaultpaperplane:before,
+.defaultparams:before,
+.defaultpen:before,
+.defaultphone:before,
+.defaultphoto:before,
+.defaultsearch:before,
+.defaultsettings:before,
+.defaultshop:before,
+.defaultsound:before,
+.defaultstack:before,
+.defaultstar:before,
+.defaultstudy:before,
+.defaultt-shirt:before,
+.defaulttag:before,
+.defaulttrash:before,
+.defaulttruck:before,
+.defaulttv:before,
+.defaultuser:before,
+.defaultvallet:before,
+.defaultvideo:before,
+.defaultvynil:before,
+.defaultworld:before {
+  font-family: "fontcustom";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.defaultbanknote:before { content: "\f100"; }
+.defaultbubble:before { content: "\f101"; }
+.defaultbulb:before { content: "\f102"; }
+.defaultcalendar:before { content: "\f103"; }
+.defaultcamera:before { content: "\f104"; }
+.defaultclip:before { content: "\f105"; }
+.defaultclock:before { content: "\f106"; }
+.defaultcloud:before { content: "\f107"; }
+.defaultcup:before { content: "\f108"; }
+.defaultdata:before { content: "\f109"; }
+.defaultdiamond:before { content: "\f10a"; }
+.defaultdisplay:before { content: "\f10b"; }
+.defaulteye:before { content: "\f10c"; }
+.defaultfire:before { content: "\f10d"; }
+.defaultfood:before { content: "\f10e"; }
+.defaultheart:before { content: "\f10f"; }
+.defaultkey:before { content: "\f110"; }
+.defaultlab:before { content: "\f111"; }
+.defaultlike:before { content: "\f112"; }
+.defaultlocation:before { content: "\f113"; }
+.defaultlock:before { content: "\f114"; }
+.defaultmail:before { content: "\f115"; }
+.defaultmegaphone:before { content: "\f116"; }
+.defaultmusic:before { content: "\f117"; }
+.defaultnews:before { content: "\f118"; }
+.defaultnote:before { content: "\f119"; }
+.defaultpaperplane:before { content: "\f11a"; }
+.defaultparams:before { content: "\f11b"; }
+.defaultpen:before { content: "\f11c"; }
+.defaultphone:before { content: "\f11d"; }
+.defaultphoto:before { content: "\f11e"; }
+.defaultsearch:before { content: "\f11f"; }
+.defaultsettings:before { content: "\f120"; }
+.defaultshop:before { content: "\f121"; }
+.defaultsound:before { content: "\f122"; }
+.defaultstack:before { content: "\f123"; }
+.defaultstar:before { content: "\f124"; }
+.defaultstudy:before { content: "\f125"; }
+.defaultt-shirt:before { content: "\f126"; }
+.defaulttag:before { content: "\f127"; }
+.defaulttrash:before { content: "\f128"; }
+.defaulttruck:before { content: "\f129"; }
+.defaulttv:before { content: "\f12a"; }
+.defaultuser:before { content: "\f12b"; }
+.defaultvallet:before { content: "\f12c"; }
+.defaultvideo:before { content: "\f12d"; }
+.defaultvynil:before { content: "\f12e"; }
+.defaultworld:before { content: "\f12f"; }

@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fontcustom glyphs preview</title>
+    <link rel="stylesheet" href="fontcustom.css" />
+    <!--[if lte IE 7]><link rel="stylesheet" href="fontcustom-ie7.css" /><![endif]-->
+
+    <style>
+      * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #fff;
+        color: #444;
+        font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      a, 
+      a:visited {
+        color: #888;
+        text-decoration: underline;
+      }
+      a:hover, 
+      a:focus { color: #000; }
+
+      h1 {
+        border-bottom: 2px solid #ddd;
+        color: #888;
+        font-size: 36px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        padding: 20px 0;
+      }
+
+      .container {
+        margin: 0 auto;
+        min-width: 880px;
+        padding: 0 40px;
+        width: 80%;
+      }
+
+      .glyph {
+        border-bottom: 1px dotted #ccc;
+        padding: 10px 0 20px;
+        margin-bottom: 20px;
+      }
+
+      .preview-glyphs { vertical-align: bottom; } 
+
+      .preview-scale { 
+        color: #888;
+        font-size: 12px; 
+        margin-top: 5px;
+      }
+
+      .step {
+        display: inline-block;
+        line-height: 1;
+        width: 10%;
+      }
+
+      
+      .size-12 { font-size: 12px; }
+      
+      .size-14 { font-size: 14px; }
+      
+      .size-16 { font-size: 16px; }
+      
+      .size-18 { font-size: 18px; }
+      
+      .size-21 { font-size: 21px; }
+      
+      .size-24 { font-size: 24px; }
+      
+      .size-36 { font-size: 36px; }
+      
+      .size-48 { font-size: 48px; }
+      
+      .size-60 { font-size: 60px; }
+      
+      .size-72 { font-size: 72px; }
+      
+
+      .usage { margin-top: 10px; }
+
+      .usage input {
+        font-family: monospace;
+        margin-right: 3px;
+        padding: 2px 5px;
+        text-align: center;
+      }
+
+      .usage .point { width: 150px; }
+
+      .usage .class { width: 250px; }
+
+      .footer {
+        color: #888;
+        font-size: 12px;
+        padding: 20px 0;
+      }
+    </style>
+
+    <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>fontcustom contains 48 glyphs:</h1> 
+
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-banknote size-12"></i><i class="step icon-banknote size-14"></i><i class="step icon-banknote size-16"></i><i class="step icon-banknote size-18"></i><i class="step icon-banknote size-21"></i><i class="step icon-banknote size-24"></i><i class="step icon-banknote size-36"></i><i class="step icon-banknote size-48"></i><i class="step icon-banknote size-60"></i><i class="step icon-banknote size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-banknote" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf100;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-bubble size-12"></i><i class="step icon-bubble size-14"></i><i class="step icon-bubble size-16"></i><i class="step icon-bubble size-18"></i><i class="step icon-bubble size-21"></i><i class="step icon-bubble size-24"></i><i class="step icon-bubble size-36"></i><i class="step icon-bubble size-48"></i><i class="step icon-bubble size-60"></i><i class="step icon-bubble size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-bubble" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf101;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-bulb size-12"></i><i class="step icon-bulb size-14"></i><i class="step icon-bulb size-16"></i><i class="step icon-bulb size-18"></i><i class="step icon-bulb size-21"></i><i class="step icon-bulb size-24"></i><i class="step icon-bulb size-36"></i><i class="step icon-bulb size-48"></i><i class="step icon-bulb size-60"></i><i class="step icon-bulb size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-bulb" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf102;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-calendar size-12"></i><i class="step icon-calendar size-14"></i><i class="step icon-calendar size-16"></i><i class="step icon-calendar size-18"></i><i class="step icon-calendar size-21"></i><i class="step icon-calendar size-24"></i><i class="step icon-calendar size-36"></i><i class="step icon-calendar size-48"></i><i class="step icon-calendar size-60"></i><i class="step icon-calendar size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-calendar" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf103;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-camera size-12"></i><i class="step icon-camera size-14"></i><i class="step icon-camera size-16"></i><i class="step icon-camera size-18"></i><i class="step icon-camera size-21"></i><i class="step icon-camera size-24"></i><i class="step icon-camera size-36"></i><i class="step icon-camera size-48"></i><i class="step icon-camera size-60"></i><i class="step icon-camera size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-camera" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf104;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-clip size-12"></i><i class="step icon-clip size-14"></i><i class="step icon-clip size-16"></i><i class="step icon-clip size-18"></i><i class="step icon-clip size-21"></i><i class="step icon-clip size-24"></i><i class="step icon-clip size-36"></i><i class="step icon-clip size-48"></i><i class="step icon-clip size-60"></i><i class="step icon-clip size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-clip" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf105;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-clock size-12"></i><i class="step icon-clock size-14"></i><i class="step icon-clock size-16"></i><i class="step icon-clock size-18"></i><i class="step icon-clock size-21"></i><i class="step icon-clock size-24"></i><i class="step icon-clock size-36"></i><i class="step icon-clock size-48"></i><i class="step icon-clock size-60"></i><i class="step icon-clock size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-clock" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf106;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-cloud size-12"></i><i class="step icon-cloud size-14"></i><i class="step icon-cloud size-16"></i><i class="step icon-cloud size-18"></i><i class="step icon-cloud size-21"></i><i class="step icon-cloud size-24"></i><i class="step icon-cloud size-36"></i><i class="step icon-cloud size-48"></i><i class="step icon-cloud size-60"></i><i class="step icon-cloud size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-cloud" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf107;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-cup size-12"></i><i class="step icon-cup size-14"></i><i class="step icon-cup size-16"></i><i class="step icon-cup size-18"></i><i class="step icon-cup size-21"></i><i class="step icon-cup size-24"></i><i class="step icon-cup size-36"></i><i class="step icon-cup size-48"></i><i class="step icon-cup size-60"></i><i class="step icon-cup size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-cup" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf108;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-data size-12"></i><i class="step icon-data size-14"></i><i class="step icon-data size-16"></i><i class="step icon-data size-18"></i><i class="step icon-data size-21"></i><i class="step icon-data size-24"></i><i class="step icon-data size-36"></i><i class="step icon-data size-48"></i><i class="step icon-data size-60"></i><i class="step icon-data size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-data" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf109;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-diamond size-12"></i><i class="step icon-diamond size-14"></i><i class="step icon-diamond size-16"></i><i class="step icon-diamond size-18"></i><i class="step icon-diamond size-21"></i><i class="step icon-diamond size-24"></i><i class="step icon-diamond size-36"></i><i class="step icon-diamond size-48"></i><i class="step icon-diamond size-60"></i><i class="step icon-diamond size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-diamond" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-display size-12"></i><i class="step icon-display size-14"></i><i class="step icon-display size-16"></i><i class="step icon-display size-18"></i><i class="step icon-display size-21"></i><i class="step icon-display size-24"></i><i class="step icon-display size-36"></i><i class="step icon-display size-48"></i><i class="step icon-display size-60"></i><i class="step icon-display size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-display" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-eye size-12"></i><i class="step icon-eye size-14"></i><i class="step icon-eye size-16"></i><i class="step icon-eye size-18"></i><i class="step icon-eye size-21"></i><i class="step icon-eye size-24"></i><i class="step icon-eye size-36"></i><i class="step icon-eye size-48"></i><i class="step icon-eye size-60"></i><i class="step icon-eye size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-eye" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10c;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-fire size-12"></i><i class="step icon-fire size-14"></i><i class="step icon-fire size-16"></i><i class="step icon-fire size-18"></i><i class="step icon-fire size-21"></i><i class="step icon-fire size-24"></i><i class="step icon-fire size-36"></i><i class="step icon-fire size-48"></i><i class="step icon-fire size-60"></i><i class="step icon-fire size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-fire" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-food size-12"></i><i class="step icon-food size-14"></i><i class="step icon-food size-16"></i><i class="step icon-food size-18"></i><i class="step icon-food size-21"></i><i class="step icon-food size-24"></i><i class="step icon-food size-36"></i><i class="step icon-food size-48"></i><i class="step icon-food size-60"></i><i class="step icon-food size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-food" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-heart size-12"></i><i class="step icon-heart size-14"></i><i class="step icon-heart size-16"></i><i class="step icon-heart size-18"></i><i class="step icon-heart size-21"></i><i class="step icon-heart size-24"></i><i class="step icon-heart size-36"></i><i class="step icon-heart size-48"></i><i class="step icon-heart size-60"></i><i class="step icon-heart size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-heart" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf10f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-key size-12"></i><i class="step icon-key size-14"></i><i class="step icon-key size-16"></i><i class="step icon-key size-18"></i><i class="step icon-key size-21"></i><i class="step icon-key size-24"></i><i class="step icon-key size-36"></i><i class="step icon-key size-48"></i><i class="step icon-key size-60"></i><i class="step icon-key size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-key" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf110;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-lab size-12"></i><i class="step icon-lab size-14"></i><i class="step icon-lab size-16"></i><i class="step icon-lab size-18"></i><i class="step icon-lab size-21"></i><i class="step icon-lab size-24"></i><i class="step icon-lab size-36"></i><i class="step icon-lab size-48"></i><i class="step icon-lab size-60"></i><i class="step icon-lab size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-lab" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf111;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-like size-12"></i><i class="step icon-like size-14"></i><i class="step icon-like size-16"></i><i class="step icon-like size-18"></i><i class="step icon-like size-21"></i><i class="step icon-like size-24"></i><i class="step icon-like size-36"></i><i class="step icon-like size-48"></i><i class="step icon-like size-60"></i><i class="step icon-like size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-like" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf112;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-location size-12"></i><i class="step icon-location size-14"></i><i class="step icon-location size-16"></i><i class="step icon-location size-18"></i><i class="step icon-location size-21"></i><i class="step icon-location size-24"></i><i class="step icon-location size-36"></i><i class="step icon-location size-48"></i><i class="step icon-location size-60"></i><i class="step icon-location size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-location" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf113;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-lock size-12"></i><i class="step icon-lock size-14"></i><i class="step icon-lock size-16"></i><i class="step icon-lock size-18"></i><i class="step icon-lock size-21"></i><i class="step icon-lock size-24"></i><i class="step icon-lock size-36"></i><i class="step icon-lock size-48"></i><i class="step icon-lock size-60"></i><i class="step icon-lock size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-lock" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf114;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-mail size-12"></i><i class="step icon-mail size-14"></i><i class="step icon-mail size-16"></i><i class="step icon-mail size-18"></i><i class="step icon-mail size-21"></i><i class="step icon-mail size-24"></i><i class="step icon-mail size-36"></i><i class="step icon-mail size-48"></i><i class="step icon-mail size-60"></i><i class="step icon-mail size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-mail" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf115;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-megaphone size-12"></i><i class="step icon-megaphone size-14"></i><i class="step icon-megaphone size-16"></i><i class="step icon-megaphone size-18"></i><i class="step icon-megaphone size-21"></i><i class="step icon-megaphone size-24"></i><i class="step icon-megaphone size-36"></i><i class="step icon-megaphone size-48"></i><i class="step icon-megaphone size-60"></i><i class="step icon-megaphone size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-megaphone" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf116;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-music size-12"></i><i class="step icon-music size-14"></i><i class="step icon-music size-16"></i><i class="step icon-music size-18"></i><i class="step icon-music size-21"></i><i class="step icon-music size-24"></i><i class="step icon-music size-36"></i><i class="step icon-music size-48"></i><i class="step icon-music size-60"></i><i class="step icon-music size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-music" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf117;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-news size-12"></i><i class="step icon-news size-14"></i><i class="step icon-news size-16"></i><i class="step icon-news size-18"></i><i class="step icon-news size-21"></i><i class="step icon-news size-24"></i><i class="step icon-news size-36"></i><i class="step icon-news size-48"></i><i class="step icon-news size-60"></i><i class="step icon-news size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-news" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf118;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-note size-12"></i><i class="step icon-note size-14"></i><i class="step icon-note size-16"></i><i class="step icon-note size-18"></i><i class="step icon-note size-21"></i><i class="step icon-note size-24"></i><i class="step icon-note size-36"></i><i class="step icon-note size-48"></i><i class="step icon-note size-60"></i><i class="step icon-note size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-note" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf119;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-paperplane size-12"></i><i class="step icon-paperplane size-14"></i><i class="step icon-paperplane size-16"></i><i class="step icon-paperplane size-18"></i><i class="step icon-paperplane size-21"></i><i class="step icon-paperplane size-24"></i><i class="step icon-paperplane size-36"></i><i class="step icon-paperplane size-48"></i><i class="step icon-paperplane size-60"></i><i class="step icon-paperplane size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-paperplane" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-params size-12"></i><i class="step icon-params size-14"></i><i class="step icon-params size-16"></i><i class="step icon-params size-18"></i><i class="step icon-params size-21"></i><i class="step icon-params size-24"></i><i class="step icon-params size-36"></i><i class="step icon-params size-48"></i><i class="step icon-params size-60"></i><i class="step icon-params size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-params" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-pen size-12"></i><i class="step icon-pen size-14"></i><i class="step icon-pen size-16"></i><i class="step icon-pen size-18"></i><i class="step icon-pen size-21"></i><i class="step icon-pen size-24"></i><i class="step icon-pen size-36"></i><i class="step icon-pen size-48"></i><i class="step icon-pen size-60"></i><i class="step icon-pen size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-pen" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11c;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-phone size-12"></i><i class="step icon-phone size-14"></i><i class="step icon-phone size-16"></i><i class="step icon-phone size-18"></i><i class="step icon-phone size-21"></i><i class="step icon-phone size-24"></i><i class="step icon-phone size-36"></i><i class="step icon-phone size-48"></i><i class="step icon-phone size-60"></i><i class="step icon-phone size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-phone" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-photo size-12"></i><i class="step icon-photo size-14"></i><i class="step icon-photo size-16"></i><i class="step icon-photo size-18"></i><i class="step icon-photo size-21"></i><i class="step icon-photo size-24"></i><i class="step icon-photo size-36"></i><i class="step icon-photo size-48"></i><i class="step icon-photo size-60"></i><i class="step icon-photo size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-photo" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-search size-12"></i><i class="step icon-search size-14"></i><i class="step icon-search size-16"></i><i class="step icon-search size-18"></i><i class="step icon-search size-21"></i><i class="step icon-search size-24"></i><i class="step icon-search size-36"></i><i class="step icon-search size-48"></i><i class="step icon-search size-60"></i><i class="step icon-search size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-search" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf11f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-settings size-12"></i><i class="step icon-settings size-14"></i><i class="step icon-settings size-16"></i><i class="step icon-settings size-18"></i><i class="step icon-settings size-21"></i><i class="step icon-settings size-24"></i><i class="step icon-settings size-36"></i><i class="step icon-settings size-48"></i><i class="step icon-settings size-60"></i><i class="step icon-settings size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-settings" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf120;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-shop size-12"></i><i class="step icon-shop size-14"></i><i class="step icon-shop size-16"></i><i class="step icon-shop size-18"></i><i class="step icon-shop size-21"></i><i class="step icon-shop size-24"></i><i class="step icon-shop size-36"></i><i class="step icon-shop size-48"></i><i class="step icon-shop size-60"></i><i class="step icon-shop size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-shop" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf121;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-sound size-12"></i><i class="step icon-sound size-14"></i><i class="step icon-sound size-16"></i><i class="step icon-sound size-18"></i><i class="step icon-sound size-21"></i><i class="step icon-sound size-24"></i><i class="step icon-sound size-36"></i><i class="step icon-sound size-48"></i><i class="step icon-sound size-60"></i><i class="step icon-sound size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-sound" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf122;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-stack size-12"></i><i class="step icon-stack size-14"></i><i class="step icon-stack size-16"></i><i class="step icon-stack size-18"></i><i class="step icon-stack size-21"></i><i class="step icon-stack size-24"></i><i class="step icon-stack size-36"></i><i class="step icon-stack size-48"></i><i class="step icon-stack size-60"></i><i class="step icon-stack size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-stack" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf123;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-star size-12"></i><i class="step icon-star size-14"></i><i class="step icon-star size-16"></i><i class="step icon-star size-18"></i><i class="step icon-star size-21"></i><i class="step icon-star size-24"></i><i class="step icon-star size-36"></i><i class="step icon-star size-48"></i><i class="step icon-star size-60"></i><i class="step icon-star size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-star" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf124;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-study size-12"></i><i class="step icon-study size-14"></i><i class="step icon-study size-16"></i><i class="step icon-study size-18"></i><i class="step icon-study size-21"></i><i class="step icon-study size-24"></i><i class="step icon-study size-36"></i><i class="step icon-study size-48"></i><i class="step icon-study size-60"></i><i class="step icon-study size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-study" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf125;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-t-shirt size-12"></i><i class="step icon-t-shirt size-14"></i><i class="step icon-t-shirt size-16"></i><i class="step icon-t-shirt size-18"></i><i class="step icon-t-shirt size-21"></i><i class="step icon-t-shirt size-24"></i><i class="step icon-t-shirt size-36"></i><i class="step icon-t-shirt size-48"></i><i class="step icon-t-shirt size-60"></i><i class="step icon-t-shirt size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-t-shirt" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf126;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-tag size-12"></i><i class="step icon-tag size-14"></i><i class="step icon-tag size-16"></i><i class="step icon-tag size-18"></i><i class="step icon-tag size-21"></i><i class="step icon-tag size-24"></i><i class="step icon-tag size-36"></i><i class="step icon-tag size-48"></i><i class="step icon-tag size-60"></i><i class="step icon-tag size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-tag" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf127;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-trash size-12"></i><i class="step icon-trash size-14"></i><i class="step icon-trash size-16"></i><i class="step icon-trash size-18"></i><i class="step icon-trash size-21"></i><i class="step icon-trash size-24"></i><i class="step icon-trash size-36"></i><i class="step icon-trash size-48"></i><i class="step icon-trash size-60"></i><i class="step icon-trash size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-trash" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf128;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-truck size-12"></i><i class="step icon-truck size-14"></i><i class="step icon-truck size-16"></i><i class="step icon-truck size-18"></i><i class="step icon-truck size-21"></i><i class="step icon-truck size-24"></i><i class="step icon-truck size-36"></i><i class="step icon-truck size-48"></i><i class="step icon-truck size-60"></i><i class="step icon-truck size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-truck" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf129;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-tv size-12"></i><i class="step icon-tv size-14"></i><i class="step icon-tv size-16"></i><i class="step icon-tv size-18"></i><i class="step icon-tv size-21"></i><i class="step icon-tv size-24"></i><i class="step icon-tv size-36"></i><i class="step icon-tv size-48"></i><i class="step icon-tv size-60"></i><i class="step icon-tv size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-tv" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-user size-12"></i><i class="step icon-user size-14"></i><i class="step icon-user size-16"></i><i class="step icon-user size-18"></i><i class="step icon-user size-21"></i><i class="step icon-user size-24"></i><i class="step icon-user size-36"></i><i class="step icon-user size-48"></i><i class="step icon-user size-60"></i><i class="step icon-user size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-user" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-vallet size-12"></i><i class="step icon-vallet size-14"></i><i class="step icon-vallet size-16"></i><i class="step icon-vallet size-18"></i><i class="step icon-vallet size-21"></i><i class="step icon-vallet size-24"></i><i class="step icon-vallet size-36"></i><i class="step icon-vallet size-48"></i><i class="step icon-vallet size-60"></i><i class="step icon-vallet size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-vallet" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12c;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-video size-12"></i><i class="step icon-video size-14"></i><i class="step icon-video size-16"></i><i class="step icon-video size-18"></i><i class="step icon-video size-21"></i><i class="step icon-video size-24"></i><i class="step icon-video size-36"></i><i class="step icon-video size-48"></i><i class="step icon-video size-60"></i><i class="step icon-video size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-video" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-vynil size-12"></i><i class="step icon-vynil size-14"></i><i class="step icon-vynil size-16"></i><i class="step icon-vynil size-18"></i><i class="step icon-vynil size-21"></i><i class="step icon-vynil size-24"></i><i class="step icon-vynil size-36"></i><i class="step icon-vynil size-48"></i><i class="step icon-vynil size-60"></i><i class="step icon-vynil size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-vynil" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <i class="step icon-world size-12"></i><i class="step icon-world size-14"></i><i class="step icon-world size-16"></i><i class="step icon-world size-18"></i><i class="step icon-world size-21"></i><i class="step icon-world size-24"></i><i class="step icon-world size-36"></i><i class="step icon-world size-48"></i><i class="step icon-world size-60"></i><i class="step icon-world size-72"></i>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span> 
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".icon-world" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12f;" />
+        </div>
+      </div>
+      
+
+      <div class="footer">
+        Made with love using <a href="http://fontcustom.com">Font Custom</a>.
+      </div>
+    </div>
+  </body>
+</html>
