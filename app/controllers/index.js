@@ -67,13 +67,16 @@ module.exports = function (config, Agreement, email, reminders) {
 		createAgreement: function (req, res) {
 			console.log(req.body);
 
-			var agreement = new Agreement();
+			var agreement = new Agreement(),
+				dueDate = new Date();
 				  
 			agreement.initiatorEmail = req.body.initiatorEmail;
 			agreement.recipientEmail = req.body.recipientEmail;
 			agreement.object = req.body.subject;
 			agreement.terms = req.body.terms;
-			agreement.dueDate = new Date(Date.now() + req.body.daysFromNow);
+			
+			dueDate.setDate(dueDate.getDate() + parseInt(req.body.daysFromNow, 10));
+			agreement.dueDate = dueDate;
 
 			console.dir(agreement);
 		
@@ -96,8 +99,7 @@ module.exports = function (config, Agreement, email, reminders) {
 
 				var subject = agreement.initiatorEmail + ' has sent you a promise.',
 					text = 'Click here to accept: ' + config.root + '/confirm/' + agreement._id,
-					html = 'Do you accept?  <a href="' + config.host + '/confirm/' + agreement._id + '">Yes</a> / No';  
-
+					html = 'You owe ' + agreement.initiatorEmail + ' the following by ' + dueDate.getMonth() + '/' + dueDate.getDate() + '/' + dueDate.getFullYear() + ':<br/><h1>' + agreement.object + '</h1>Do you accept?  <a href="' + config.host + '/confirm/' + agreement._id + '">Yes</a> / No';  
 				email.send([{email: agreement.recipientEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
 						console.log("-------------------");
