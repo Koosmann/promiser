@@ -17,7 +17,7 @@ module.exports = function (path, port) {
 		staging: {
 			db: process.env.MONGOHQ_URL,
 			root: rootPath,
-			host: rootPath,
+			host: process.env.APP_ROOT,
 			app: {
 				name: 'Stage - Promiser'
 			},

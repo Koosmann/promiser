@@ -35,7 +35,7 @@ var	https = require('https'),
 	async = require('async'),
 
 // Models
-	Agreement = require('./app/models/Agreement')(mongoose),
+	Agreement = require('./app/models/agreement')(mongoose),
 
 // Cron Jobs
 	cron = require('cron').CronJob,
