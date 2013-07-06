@@ -11,7 +11,9 @@
         <meta name="viewport" content="width=device-width">
 
         <!-- fonts -->
-
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
 
         <!-- css -->
         <link rel="stylesheet" href="assets/css/normalize.css">
@@ -20,13 +22,9 @@
         <!-- js -->
         <script src="assets/js/modernizr.js"></script>
 
-
          <!--[if (gt IE 8) | (IEMobile)]><!-->        
         <link rel="stylesheet" href="assets/css/nav.css">         
         <!--<![endif]-->
-
-     
-
 
         <!--[if (lt IE 9) & (!IEMobile)]>
         <link rel="stylesheet" href="css/ie.css">
@@ -34,16 +32,18 @@
 
     </head>    
     <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+
+        
 
         <!-- Add your site or application content here -->
         <div id="outter-wrap">
             <div id="inner-wrap">
                 
-                <div id="header" class="bg-grey set-center w1024">
+                <div id="header">
                 	PROMISER
+                    <p id="byline">
+                        painlessly create casual contracts
+                    </p>
                 </div><!-- #/header -->
 
 
@@ -55,28 +55,28 @@
                         <div class="borrow-form">
 
                             <form action="/create" method="post">
-                                <div class="control-group">
+                                <div class="control-input">
                                     <label for="initiatorEmail">From:</label>
                                     <input name="initiatorEmail" id="initiatorEmail" type="text">
                                 </div>
 
-                                <div class="control-group">
+                                <div class="control-input">
                                     <label for="recipientEmail">To:</label>
                                     <input name="recipientEmail" id="recipientEmail" type="text">
                                 </div>
 
 
-                                <div class="control-group">
+                                <div class="control-input">
                                     <label for="daysFromNow">Days from Now</label>
                                     <input name="daysFromNow" id="daysFromNow" type="text">
                                 </div>
 
-                                <div class="control-group">
+                                <div class="control-input">
                                     <label for="subject">Subject:</label>
                                     <input name="subject" id="subject" type="text">
                                 </div>
 
-                                <div class="control-group">
+                                <div class="control-input">
                                     <label for="terms">Terms:</label>
                                     <textarea name="terms" id="terms" cols="30" rows="10"></textarea>
                                 </div>

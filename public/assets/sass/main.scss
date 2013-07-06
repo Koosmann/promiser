@@ -1,0 +1,52 @@
+$solid : #AD5881;
+$light : #f0f0f0;
+
+body {
+	font-family: Ubuntu, san-serif;
+	background: #DCDEE0;
+}
+
+p {
+	font-family: 'Vollkorn', serif;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+}
+
+#outter-wrap {
+	width: 100%;
+}
+#inner-wrap {
+	width: 980px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+#header {
+	text-align: center;
+	padding: 20px 0;
+	font-size: 30px;
+	border-top: 10px solid red;
+}
+#byline {
+	padding: 0 0 20px 0;
+	text-align: center;
+	
+}
+
+
+label{
+	width: 200px;
+	display: block;
+	text-transform: uppercase;
+	font-size: 10px;
+	padding-bottom: .5em;
+}
+input, textarea {
+	margin-bottom: 1em;
+}
+
+.borrow-form {
+	background: #f0f0f0;
+	border: 1px solid #303030;
+	padding: 20px;
+}
