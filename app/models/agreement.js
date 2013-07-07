@@ -28,7 +28,10 @@ module.exports = function (mongoose) {
 		terms: { type: String, required: true, trim: true },
 
 		// Confirmation Status
-		confirmationStatus: { type: String, default: "pending" }
+		confirmationStatus: { type: String, default: "unverified" },
+
+		// Salt
+		salt: { type: String, required: true }
 
 	});
 

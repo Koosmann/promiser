@@ -13,6 +13,7 @@ var	https = require('https'),
 	http = require("http"),
 	url = require('url'),
 	path = require('path'),
+	crypto = require('crypto'),
 
 // Environment
 	env = process.env.NODE_ENV || 'development',
@@ -37,12 +38,15 @@ var	https = require('https'),
 // Models
 	Agreement = require('./app/models/agreement')(mongoose),
 
+// BCrypt
+	bcrypt = require('bcrypt'),
+
 // Cron Jobs
 	cron = require('cron').CronJob,
 	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async),
 
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email, reminders);
+	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto);
 
 
 ///////////////////
