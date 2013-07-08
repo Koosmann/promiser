@@ -1,9 +1,30 @@
 $solid : #AD5881;
-$light : #f0f0f0;
+$altsolid : #333333;
+$lightsolid : #DCDEE0;
+$light : #fafafa;
+
+
+$bodybgcolor : $lightsolid;
+
+
+
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 800 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+@mixin longshadow($color) {
+  text-shadow: makelongshadow($color);
+}
+
+
 
 body {
 	font-family: Ubuntu, san-serif;
-	background: #DCDEE0;
+	background: $lightsolid;
 }
 
 p {
@@ -15,24 +36,53 @@ p {
 
 #outter-wrap {
 	width: 100%;
+	margin-bottom: 4em;
 }
 #inner-wrap {
 	width: 980px;
 	margin: 0 auto;
 	padding: 0 20px;
 }
+
+// #header
 #header {
 	text-align: center;
 	padding: 20px 0;
-	font-size: 30px;
+	font-size: 50px;
 	border-top: 10px solid red;
+	color: #fff;
+    @include longshadow(darken($altsolid, 5% ));
 }
 #byline {
+	color: #c1e0e8 !important;
 	padding: 0 0 20px 0;
 	text-align: center;
-	
+    @include longshadow(darken($altsolid, 8% ));
 }
 
+
+// .borrow-form
+.borrow-form {
+	background: #f0f0f0;
+	border: 1px solid #303030;
+	padding: 20px;
+	width: 268px;
+	margin: 0 auto;
+	position: relative;
+
+	background: #fafafa;
+	border: 1px solid #c0c0c0;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+	text-align: left;	
+}
+.control-input {
+	border-bottom: 1px dotted #c0c0c0;
+	margin-bottom: 1em;
+}
 
 label{
 	width: 200px;
@@ -42,11 +92,19 @@ label{
 	padding-bottom: .5em;
 }
 input, textarea {
+	width: 260px;
 	margin-bottom: 1em;
+	border-radius: 3px;
+	border: 1px solid #fdfdfd;
+	-webkit-background-clip: border-box;
+	-webkit-background-origin: padding-box;
+	-webkit-background-size: auto;
+	font-weight: normal;
+	background: #fff;
+	text-indent: 5px;
 }
-
-.borrow-form {
-	background: #f0f0f0;
-	border: 1px solid #303030;
-	padding: 20px;
+#submit {
+	width: 100px;
+	margin: 0 auto;
+	position: relative;
 }
