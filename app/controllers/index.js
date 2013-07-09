@@ -100,7 +100,7 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 				text = 'Click here to confirm: ' + config.root + '/confirm/' + agreement._id,
 				html = 'This is what ' + agreement.recipientEmail + ' will see:<br/><br/>You owe ' + agreement.initiatorEmail + ' the following by ' + (agreement.dueDate.getMonth() + 1) + '/' + agreement.dueDate.getDate() + '/' + agreement.dueDate.getFullYear() + ':<br/><h1>' + agreement.object + '</h1>Would you like to confirm this promise? <a href="' + config.host + '/' + agreement._id + '/validate/' + '">Yes</a> / No';  
 			
-				email.send([{email: agreement.recipientEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
+				email.send([{email: agreement.initiatorEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
 						console.log("-------------------");
 						console.log("Error! >> " + err);
