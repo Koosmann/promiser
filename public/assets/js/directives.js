@@ -6,9 +6,8 @@ promiser.directive('pInput', function ($timeout) {
 
 	return {
         restrict: 'A',
-        scope: true,
         require: '^form',
-        link: function (scope, elm, attrs) { // scope - used for logic / elm - used for DOM manipulation (it's like a jQuery object) / attrs - used as options (they're all of the attributes on the tag this directive is attached too)
+        link: function (scope, elm, attrs, ctrl) { // scope - used for logic / elm - used for DOM manipulation (it's like a jQuery object) / attrs - used as options (they're all of the attributes on the tag this directive is attached too)
 			var minWidth, maxWidth, comfortZone, testSubject;
 
 			function prepTester() {
@@ -26,8 +25,6 @@ promiser.directive('pInput', function ($timeout) {
                     letterSpacing: elm.css('letterSpacing'),
                     whiteSpace: 'nowrap'
                 })
-
-            	console.dir(elm);
             }
 
             function check() {
