@@ -2,51 +2,64 @@
 
 /* Directives */
 
-promiser.directive('pInput', function ($compile) {
+promiser.directive('pInput', function ($timeout) {
 
 	return {
-        restrict: 'C',
+        restrict: 'A',
         scope: true,
         require: '^form',
         link: function (scope, elm, attrs) { // scope - used for logic / elm - used for DOM manipulation (it's like a jQuery object) / attrs - used as options (they're all of the attributes on the tag this directive is attached too)
-        	var	original = elm.html();
+			var minWidth, maxWidth, comfortZone, testSubject;
 
-        	scope.isInput = false;
+			function prepTester() {
+				minWidth = 10 || elm.width();
+				maxWidth = 400;
+				comfortZone = 1;
+                testSubject = $('<tester/>').css({
+                    position: 'absolute',
+                    top: -9999,
+                    left: -9999,
+                    width: 'auto',
+                    fontSize: elm.css('fontSize'),
+                    fontFamily: elm.css('fontFamily'),
+                    fontWeight: elm.css('fontWeight'),
+                    letterSpacing: elm.css('letterSpacing'),
+                    whiteSpace: 'nowrap'
+                })
 
-        	// Turn the light blue 'fields' into actual inputs
-        	elm.bind('click', function (e) {
-	        	if (!scope.isInput) {
-		        	scope.isInput = true;
-		        	var width = elm.width();
-		        	elm.html("<input name=" + attrs.pInputName + " placeholder='" + original + "' type='text'/>");
+            	console.dir(elm);
+            }
 
-					var input = angular.element(elm.children()[0]);	
-					
-					// Initialize the size of the input to match the width of what it's relacing
-					input.css('width', width);	        	
-		        	
-		        	input.autoGrowInput({
-					    comfortZone: 20,
-					    minWidth: width,
-					    maxWidth: 400
-					});
+            function check() {
+        		var value = angular.equals(elm.val(), "") ? attrs.placeholder : elm.val();
 
-					input.focus()
+                // Enter new content into testSubject
+                //var escaped = value.replace(/&/g, '&amp;').replace(/\s/g,'&nbsp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                testSubject.html(value);
 
-					// Revert to original 'field' if empty
-		        	input.blur(function(e) {
-		        		if (input[0].value == "") {
-		        			elm.html(original);
-		        			scope.isInput = false;
+                // Calculate new width + whether to change
+                var testerWidth = testSubject.width(),
+                    newWidth = (testerWidth + comfortZone) >= minWidth ? testerWidth + comfortZone : minWidth,
+                    currentWidth = elm.width(),
+                    isValidWidthChange = (newWidth < currentWidth && newWidth >= minWidth)
+                                         || (newWidth > minWidth && newWidth < maxWidth);
 
-		        			if (!scope.$$phase) scope.$digest(); // Calling this here so that the ngClass's that rely in isInput will register the change
-		        		}
-		        	});
+                // Animate width
+                if (isValidWidthChange) {
+                    elm.width(newWidth);
+                }
 
-		        	if (!scope.$$phase) scope.$digest(); // Same as a few lines above
+            }
 
-				}
-        	});
+            elm.bind('keyup keydown blur update', function () {
+            	check();
+            });
+
+            setTimeout(function () { 
+            	prepTester()
+            	testSubject.insertAfter(elm);
+            	check() 
+            }, 0);
         }
     }
 });

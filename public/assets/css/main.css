@@ -91,8 +91,6 @@ input[type='text'] {
   padding: 0px;
   margin: 0px;
   border: none;
-  color: #428bca;
-  font-weight: bold;
 }
 
 #submit {
@@ -100,16 +98,21 @@ input[type='text'] {
   margin: 0 auto;
   position: relative; }
 
-.p-name,
-.p-email,
-.p-amount,
-.p-item,
-.p-service,
-.p-date,
-.p-input,
+.p-key-item-group {
+  white-space: nowrap;
+}
+
 .p-key-item,
 .p-key-item-light {
   color: #428bca;
+}
+
+input.p-key-item,
+input.p-key-item-light {
+  display: inline-block;
+}
+
+.p-key-item {
   font-weight: bold;
 }
 
@@ -117,30 +120,17 @@ input[type='text'] {
   font-weight: normal;
 }
 
-.p-name,
-.p-email,
-.p-amount,
-.p-item,
-.p-service,
-.p-date,
-.p-input {
-  display: inline-block;
-  opacity: .5;
-  white-space: nowrap;
-  cursor: pointer;
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #CCC;
 }
-
-.p-input.active {
-  opacity: 1;
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #CCC;
 }
-
-.p-name:hover,
-.p-email:hover,
-.p-amount:hover,
-.p-item:hover,
-.p-service:hover,
-.p-date:hover {
-  opacity: 1;
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #CCC;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #CCC;
 }
 
 .text-light {
