@@ -1,23 +1,17 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Promiser</title>
-</head>
-<body>
-	<h1>Promiser</h1>
-	<h4>Agreement ID: <%= data.id %></h4>
-	<h4>Intiator: <%= data.agreement.initiatorEmail %></h4>
-	<h4>Recipient: <%= data.agreement.recipientEmail %></h4>
-	<h4>Object: <%= data.agreement.object %></h4>
-	<h4>Terms: <%= data.agreement.terms %></h4>
-	<h4>Due Date: <%= data.agreement.dueDate %></h4>
-	
-	<br />
-	<h4>Confirmation Status: <%= data.agreement.confirmationStatus %></h4>
+<%= include indexHeader %>
+    <%= include header %>
+        <div id="content" ng-controller='Agreement' ng-init="agreementData=<%= data.agreement %>">
 
-	<% if (data.agreement.confirmationStatus == 'confirmed') { %>
-		<p>Confirmation Date: <%= data.agreement.confirmationDate %></p>
-	<% } %>
-</body>
-</html>
+            <div id="main" class="bg-grey set-left"> 
+
+                <div class="borrow-form" ng-bind-html-unsafe='agreement'></div>
+
+            </div><!-- /#main -->
+
+
+            <div id="aside" class="bg-grey set-right "></div><!-- /#aside -->
+
+        </div><!-- /#content -->   
+
+        <div id="footer"></div><!-- /#footer -->
+<%= include indexFooter %>

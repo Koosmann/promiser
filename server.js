@@ -14,6 +14,7 @@ var	https = require('https'),
 	url = require('url'),
 	path = require('path'),
 	crypto = require('crypto'),
+	util = require('util'),
 
 // Environment
 	env = process.env.NODE_ENV || 'development',
@@ -45,8 +46,12 @@ var	https = require('https'),
 	cron = require('cron').CronJob,
 	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async),
 
+// Templates
+	promises = require('./app/templates/promises')(util),
+	emails = require('./app/templates/emails')(util, config, crypto),
+
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto);
+	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails);
 
 
 ///////////////////

@@ -1,0 +1,10 @@
+<div id="header">
+	promiser
+    <p id="byline">
+        <ng-pluralize count='<%= data.count %>' when="{
+                                                    '0':'helping you not forget to do what you say you\'ll do :)', 
+                                                    'one':'currently helping one, yes, one person keep their promises', 
+                                                    'other':'currently helping {{ <%= data.count %>|number:0 }} people keep their promises'}"> 
+        </ng-pluralize>
+    </p>
+</div><!-- #/header -->

@@ -1,129 +1,23 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+<%= include indexHeader %>
+    <%= include header %>
+        <div id="content" ng-controller='Index'>
 
-        <!-- fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+            <div id="main" class="bg-grey set-left"> 
 
-        <!-- css -->
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        
-        <!-- js -->
-        <script src="assets/js/modernizr.js"></script>
+                <ul class="nav nav-pills">
+                    <li ng-repeat='option in options' ng-class="{'active': option.active}" ng-click='chooseOption($index)'>
+                        <a href="#"><i class='{{ option.icon }}'></i></a>
+                    </li>
+                </ul>        
 
-         <!--[if (gt IE 8) | (IEMobile)]><!-->        
-        <link rel="stylesheet" href="assets/css/nav.css">         
-        <!--<![endif]-->
+                <div class="borrow-form" ng-bind-html-unsafe='currentForm'></div>
 
-        <!--[if (lt IE 9) & (!IEMobile)]>
-        <link rel="stylesheet" href="css/ie.css">
-        <![endif]-->
-
-    </head>    
-    <body>
-
-        
-
-        <!-- Add your site or application content here -->
-        <div id="outter-wrap">
-            <div id="inner-wrap">
-                
-                <div id="header">
-                	PROMISER
-                    <p id="byline">
-                        painlessly create casual contracts
-                    </p>
-                </div><!-- #/header -->
+            </div><!-- /#main -->
 
 
-                <div id="content" class="">
+            <div id="aside" class="bg-grey set-right "></div><!-- /#aside -->
 
-                    <div id="main" class="bg-grey set-left">           
+        </div><!-- /#content -->   
 
-
-                        <div class="borrow-form">
-
-                            <form action="/create" method="post">
-                                <div class="control-input">
-                                    <label for="initiatorEmail">From:</label>
-                                    <input name="initiatorEmail" id="initiatorEmail" placeholder="username@email.com" type="text">
-                                </div>
-
-                                <div class="control-input">
-                                    <label for="recipientEmail">To:</label>
-                                    <input name="recipientEmail" id="recipientEmail" type="text">
-                                </div>
-
-
-                                <div class="control-input">
-                                    <label for="daysFromNow">Days from Now</label>
-                                    <input name="daysFromNow" id="daysFromNow" type="text">
-                                </div>
-
-                                <div class="control-input">
-                                    <label for="subject">Subject:</label>
-                                    <input name="subject" id="subject" type="text">
-                                </div>
-
-                                <div class="control-input">
-                                    <label for="terms">Terms:</label>
-                                    <textarea name="terms" id="terms" cols="30" rows="10"></textarea>
-                                </div>
-                                
-                                <div class="action-button">
-                                    <input name="submit" id="submit" class="cta" type="submit" value="submit">
-                                </div>
-
-                            </form>
-
-                        </div>
-
-
-
-                    </div><!-- /#main -->
-
-
-                    <div id="aside" class="bg-grey set-right ">
-                    </div><!-- /#aside -->
-
-                </div><!-- /#content -->   
-
-                <div id="footer">
-                    
-                </div><!-- /#footer -->
-    
-
-            </div><!-- /#outter-wrap -->   
-        </div><!-- /#inner-wrap -->
-
-
-        <!-- end of page scripts -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="assets/js/jquery.js"><\/script>')</script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
-
-        <!-- Angular -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
-
-
-        <!-- Analytics + Tracking -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
-</html>
+        <div id="footer"></div><!-- /#footer -->
+<%= include indexFooter %>

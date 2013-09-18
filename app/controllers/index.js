@@ -2,7 +2,7 @@
 // Index //
 ///////////
 	
-module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) {
+module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails) {
 	
 	return {
 		//////////////
@@ -12,7 +12,15 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 		index: function (req, res) {
 			console.log('homepage!');
 
-			res.render('index');
+			var data = {};
+
+			Agreement.count({confirmationStatus:'confirmed'}, function (err, count) {
+				if (err) console.log("AGREEMENT COUNT ERROR - %s", err);
+
+				data.count = count;
+
+				res.render('index', {data: data});
+			});
 		},
 
 		////////////////////
@@ -31,7 +39,15 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 					console.log("Agreement found!");
 					console.log("----------------");
 
-					data.agreement = agreement;
+					data.agreement = JSON.stringify(agreement);
+
+					Agreement.count({confirmationStatus:'confirmed'}, function (err, count) {
+						if (err) console.log("AGREEMENT COUNT ERROR - %s", err);
+
+						data.count = count;
+
+						res.render('agreement', {data: data});
+					});
 				} else {
 					if (err) {
 						console.log("-------------------");
@@ -43,19 +59,8 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					// Dummy Data
-					data.agreement = {};
-
-					data.agreement.initiatorEmail = 'initiator@email.com';
-					data.agreement.recipientEmail = 'recipient@email.com';
-					data.agreement.confirmationDate = new Date();
-					data.agreement.dueDate = new Date();
-					data.agreement.object = 'TEST OBJECT';
-					data.agreement.terms = 'No agreement found, but here is an example :)';
-					data.agreement.confirmationStatus = 'test';
+					res.send("404 not found :(", 404);
 				}
-
-				res.render('agreement', {data: data});
 			});
 
 		},
@@ -70,12 +75,30 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 			var agreement = new Agreement(),
 				dueDate = new Date();
 				  
+			agreement.initiatorFirstName = req.body.initiatorFirstName;
+			agreement.initiatorLastName = req.body.initiatorLastName;
 			agreement.initiatorEmail = req.body.initiatorEmail;
+
+			agreement.recipientFirstName = req.body.recipientFirstName;
+			agreement.recipientLastName = req.body.recipientLastName;
 			agreement.recipientEmail = req.body.recipientEmail;
-			agreement.object = req.body.subject;
-			agreement.terms = req.body.terms;
+
+			switch (req.body.type) {
+				case 'payment':
+					agreement.amount = req.body.amount;
+					break;
+				case 'product':
+					agreement.item = req.body.item;
+					break;
+				case 'service':
+					agreement.service = req.body.service;
+					break;
+			}
+
+			agreement.type = req.body.type;
 			
-			dueDate.setDate(dueDate.getDate() + parseInt(req.body.daysFromNow, 10));
+			dueDate.setDate(dueDate.getDate() + parseInt(req.body.dueDaysFromNow, 10));
+			agreement.dueDaysFromNow = parseInt(req.body.dueDaysFromNow, 10);
 			agreement.dueDate = dueDate;
 			agreement.salt = bcrypt.genSaltSync(10);
 
@@ -96,11 +119,11 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 				
 				// Need to some sort of preview/verifification for initiator
 
-				var subject = 'Confirm your promise for ' + agreement.initiatorEmail, 
-				text = 'Click here to confirm: ' + config.root + '/confirm/' + agreement._id,
-				html = 'This is what ' + agreement.recipientEmail + ' will see:<br/><br/>You owe ' + agreement.initiatorEmail + ' the following by ' + (agreement.dueDate.getMonth() + 1) + '/' + agreement.dueDate.getDate() + '/' + agreement.dueDate.getFullYear() + ':<br/><h1>' + agreement.object + '</h1>Would you like to confirm this promise? <a href="' + config.host + '/' + agreement._id + '/validate/' + '">Yes</a> / No';  
+				var subject = 'Please verify your email & confirm your promise', 
+					text = 'Click here to confirm: ' + config.root + '/confirm/' + agreement._id,
+					html = emails.verification(agreement); 
 			
-				email.send([{email: agreement.initiatorEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
+				email.send([{email: agreement.initiatorEmail, name: agreement.initiatorFirstName + " " + agreement.initiatorLastName }], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
 						console.log("-------------------");
 						console.log("Error! >> " + err);
@@ -153,11 +176,11 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 								return res.send('null');
 							}
 							
-							var subject = agreement.initiatorEmail + ' has sent you a promise.',
+							var subject = util.format('%s %s has sent you a promise', agreement.initiatorFirstName, agreement.initiatorLastName),
 								text = 'Click here to accept: ' + config.root + '/confirm/' + agreement._id,
-								html = 'You owe ' + agreement.initiatorEmail + ' the following by ' + (agreement.dueDate.getMonth() + 1) + '/' + agreement.dueDate.getDate() + '/' + agreement.dueDate.getFullYear() + ':<br/><h1>' + agreement.object + '</h1>Do you accept?  <a href="' + config.host + '/' + agreement.id + '/confirm/' + crypto.createHmac('sha1', agreement.salt).update(agreement.id).digest('hex') + '">Yes</a> / No';  
+								html = emails.confirmation(agreement);  
 							
-							email.send([{email: agreement.recipientEmail }], 'hello@promiser.com', subject, text, html, function (err, response){
+							email.send([{email: agreement.recipientEmail, name: agreement.recipientFirstName + " " + agreement.recipientLastName}], 'hello@promiser.com', subject, text, html, function (err, response){
 								if (err) {
 									console.log("-------------------");
 									console.log("Error! >> " + err);
@@ -241,9 +264,9 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto) 
 
 									var subject = 'Promise confirmed!',
 										text = 'This promise, ' + config.host + '/' + agreement._id + ', has been confirmed and needs to be fulfilled by: ' + agreement.dueDate,
-										html = 'This <a href="' + config.host + '/confirm/' + agreement._id + '">promise</a> has been confirmed and needs to be fulfilled by: ' + agreement.dueDate;  
+										html = emails.receipt(agreement);
 
-									email.send([{email: agreement.initiatorEmail}, {email: agreement.recipientEmail}], 'hello@promiser.com', subject, text, html, function (err, response){
+									email.send([{email: agreement.initiatorEmail, name: agreement.initiatorFirstName + " " + agreement.initiatorLastName }, {email: agreement.recipientEmail, name: agreement.recipientFirstName + " " + agreement.recipientLastName}], 'hello@promiser.com', subject, text, html, function (err, response){
 										if (err) {
 											console.log("-------------------");
 											console.log("Error! >> " + err);

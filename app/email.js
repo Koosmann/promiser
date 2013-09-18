@@ -12,6 +12,7 @@ module.exports = function (mandrill) {
 				message: {
 					to: to,
 					from_email: from,
+					from_name: 'Promiser',
 					bcc_address: 'koosmann@gmail.com',
 					subject: subject,
 					text: text,
