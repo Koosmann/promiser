@@ -60,3 +60,27 @@ promiser.directive('pInput', function ($timeout) {
         }
     }
 });
+
+promiser.directive('pInt', function ($filter) {
+
+	// Only allow integers
+
+	return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+
+            ctrl.$parsers.unshift(function(viewValue) {
+
+            	if (viewValue) {
+	                ctrl.$viewValue = $filter('number')(viewValue.match(/\d/g).join(""));
+	                ctrl.$render();
+
+	                setTimeout(function () { console.dir(ctrl) }, 0);
+
+	                return viewValue.match(/\d/g).join("");
+	            }
+            });
+		}
+	}
+});
