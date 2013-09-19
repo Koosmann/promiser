@@ -13,8 +13,7 @@ promiser.filter('pluralizeDays', function () {
 
 promiser.filter('daysToGo', function () {
 	return function (time) {
-		var timeAgo, unit,
-			dueDate = new Date(time),
+		var dueDate = new Date(time),
 			now = new Date(),
 			secondsAgo = (dueDate.getTime()/1000) - (now.getTime()/1000);
 

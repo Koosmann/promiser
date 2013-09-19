@@ -42,13 +42,13 @@ var	https = require('https'),
 // BCrypt
 	bcrypt = require('bcrypt'),
 
-// Cron Jobs
-	cron = require('cron').CronJob,
-	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async),
-
 // Templates
 	promises = require('./app/templates/promises')(util),
 	emails = require('./app/templates/emails')(util, config, crypto),
+
+// Cron Jobs
+	cron = require('cron').CronJob,
+	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async, util, emails),
 
 // Controllers
 	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails);

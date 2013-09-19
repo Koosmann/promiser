@@ -14,10 +14,10 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, 
 
 			var data = {};
 
-			Agreement.count({confirmationStatus:'confirmed'}, function (err, count) {
+			Agreement.distinct('initiatorEmail', {confirmationStatus:'confirmed'}, function (err, results) {
 				if (err) console.log("AGREEMENT COUNT ERROR - %s", err);
 
-				data.count = count;
+				data.count = results.length;
 
 				res.render('index', {data: data});
 			});
@@ -41,10 +41,10 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, 
 
 					data.agreement = JSON.stringify(agreement);
 
-					Agreement.count({confirmationStatus:'confirmed'}, function (err, count) {
+					Agreement.distinct('initiatorEmail', {confirmationStatus:'confirmed'}, function (err, results) {
 						if (err) console.log("AGREEMENT COUNT ERROR - %s", err);
 
-						data.count = count;
+						data.count = results.length;
 
 						res.render('agreement', {data: data});
 					});

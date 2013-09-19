@@ -19,6 +19,8 @@ module.exports = function (util, config, crypto) {
 		}
 	}
 
+	var reminder = "<h1 style='font-weight:normal;color:#111;'>You have %s %s left to fulfill your promise to %s.</h1>"
+
 	return {
 		verification: function (agreement) {
 
@@ -41,8 +43,7 @@ module.exports = function (util, config, crypto) {
 		},
 		confirmation: function (agreement) {
 				
-			return util.format(	"<br/>" +
-								promises[agreement.type].content +
+			return util.format(	promises[agreement.type].content +
 								"<h1 style='font-weight:normal;color:#AAA;'>Would you like to accept this promise?</h1>" + 
 								"<h1 style='color:#AAA;'><a href='%s/%s/confirm/%s' style='text-decoration:none;color:#428bca;'>Yes</a> / No</h1>" +
 								"The sender of this promise verified their email as %s.  If you aren't familiar with this email address or if you don't think %s created this promise, then you should not accept it!", 
@@ -59,14 +60,39 @@ module.exports = function (util, config, crypto) {
 								agreement.initiatorFirstName);
 		},
 		receipt: function (agreement) {
-			return util.format(	"<br/>" +
-								"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
+			return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
 								"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a></h1><br/>" + 
 								"This promise has been verified by %s & %s.", 
 								config.host,
 								agreement._id,
 								agreement.initiatorEmail,
 								agreement.recipientEmail);
+		},
+		reminder: {
+			toInitiator: function (agreement, daysLeft, dayUnit) {
+				return util.format(	"<h1 style='font-weight:normal;color:#111;'>You have <span style='font-weight:bold;color:#428bca;'>%s %s</span> left to fulfill your promise to %s.</h1>" +
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a></h1><br/>" +
+									"This promise has been verified by %s & %s.",
+									daysLeft,
+									dayUnit,
+									agreement.recipientFirstName,
+									config.host,
+									agreement._id,
+									agreement.initiatorEmail,
+									agreement.recipientEmail)
+			},
+			toRecipient: function (agreement, daysLeft, dayUnit) {
+				return util.format(	"<h1 style='font-weight:normal;color:#111;'>%s has <span style='font-weight:bold;color:#428bca;'>%s %s</span> left to fulfill their promise to you.</h1>" +
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a></h1><br/>" +
+									"This promise has been verified by %s & %s.",
+									agreement.initiatorFirstName,
+									daysLeft,
+									dayUnit,
+									config.host,
+									agreement._id,
+									agreement.initiatorEmail,
+									agreement.recipientEmail)
+			}
 		}
 	}
 }
