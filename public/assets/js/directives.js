@@ -73,14 +73,82 @@ promiser.directive('pInt', function ($filter) {
             ctrl.$parsers.unshift(function(viewValue) {
 
             	if (viewValue) {
-	                ctrl.$viewValue = $filter('number')(viewValue.match(/\d/g).join(""));
-	                ctrl.$render();
+                    if (viewValue.match(/[0-9]/g) == null) {
+                        ctrl.$viewValue = "";
+                        ctrl.$render();
+                    } else {
+    	                ctrl.$viewValue = $filter('number')(viewValue.match(/[0-9]/g).join(""));
+    	                ctrl.$render();
+                    }
 
 	                setTimeout(function () { console.dir(ctrl) }, 0);
 
-	                return viewValue.match(/\d/g).join("");
+	                return ctrl.$viewValue;
 	            }
             });
 		}
 	}
+});
+
+promiser.directive('pNotZero', function ($filter) {
+
+    // Only allow integers
+
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+
+            ctrl.$parsers.unshift(function(viewValue) {
+
+                if (viewValue < 1) {
+                    ctrl.$setValidity('zero', false);
+                    return undefined;
+                } else {
+                    ctrl.$setValidity('zero', true);
+                    return viewValue;
+                }
+            });
+        }
+    }
+});
+
+promiser.directive('uiValidateFormRequirements', function() {
+    return {
+        require: '^form',
+        link: function(scope, elm, attrs, ctrl) {
+            console.dir(ctrl);
+
+            elm.bind('click', function (e) {
+                if (ctrl.$invalid) {
+                    console.log("Making the form dirty, hehe.");
+                    ctrl.$setDirty();
+                    // Making all required fields dirty.
+                    var field;
+                    for (var i=0; i<ctrl.$error.required.length; i++) {
+                        console.dir(ctrl.$error.required[i].$name);
+                        field = ctrl.$error.required[i].$name;
+                        ctrl[field].$dirty = 1;
+                    }
+                    console.dir(ctrl);
+
+                    if (ctrl.$error.required) scope.error = 'All fields are required :/';
+                    else if (ctrl.$error.zero) scope.error = "Really? Within 0 days?";
+                    else if (ctrl.$error.email) scope.error = "Those don't look like emails...";
+                    else scope.error = null;
+
+                    console.dir(scope);
+
+                    if (!scope.$$phase) scope.$digest();
+                    
+                    e.preventDefault();
+                } else {
+                    scope.error = null;
+                    console.log("You are good to go.");
+                    //ctrl.$setPristine();
+                    //console.dir(ctrl);
+                }
+            });
+        }
+    };
 });

@@ -4,8 +4,9 @@
 
 promiser.filter('pluralizeDays', function () {
 	return function (value) {
+		//console.log(value);
 		if (value === undefined) return 'days';
-		else if (value == 1) return 'day';
+		else if (value == '1') return 'day';
 		else if (value == 'less than one') return 'day';
 		else return 'days';
 	}
@@ -16,6 +17,23 @@ promiser.filter('daysToGo', function () {
 		var dueDate = new Date(time),
 			now = new Date(),
 			secondsAgo = (dueDate.getTime()/1000) - (now.getTime()/1000);
+
+		var DAY = 86400;
+
+		console.log(secondsAgo/DAY);
+
+		if (secondsAgo/DAY >= 1) return Math.floor(secondsAgo/DAY);
+		else if (secondsAgo/DAY > 0 && secondsAgo/DAY < 1) return 'less than one';
+		else return 0;
+	}
+});
+
+promiser.filter('daysAgo', function () {
+	return function (time) {
+		console.log(time);
+		var then = new Date(time),
+			now = new Date(),
+			secondsAgo = (now.getTime()/1000) - (then.getTime()/1000);
 
 		var DAY = 86400;
 

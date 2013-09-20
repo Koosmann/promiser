@@ -42,6 +42,7 @@ module.exports = function (cron, Agreement, email, async, util, emails) {
 					    var today = new Date(),
 					    	daysLeft = getDaysLeft(agreement.dueDate);
 					    
+					    // Send reminders when there is a multiple of 10 days left & at 5, 3, 2, 1, and 'less than one' days left
 					    if (daysLeft%10 == 0 || daysLeft == 5 || (daysLeft <= 3 && daysLeft >= 1) || daysLeft == 'less than one') {
 
 						    var	dayUnit = pluralizeDays(daysLeft),

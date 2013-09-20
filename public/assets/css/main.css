@@ -67,7 +67,8 @@ input:focus, textarea:focus {
     outline: 0;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='email'] {
   padding: 0px;
   margin: 0px;
   border: none;
@@ -117,6 +118,33 @@ input.p-key-item-light {
   color: #AAA;
 }
 
+.text-big {
+  font-size: 35px;
+}
+
 .text-small {
   font-size: 12px;
+}
+
+.text-positive,
+.text-neutral,
+.text-negative {
+  font-weight:  bold;
+}
+
+.text-positive {
+  color: #46D846;
+}
+
+.text-neutral {
+  color: orange;
+}
+
+.text-negative {
+  color: #FF307B;
+}
+
+/* Included for Angular's ngCloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

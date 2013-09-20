@@ -23,8 +23,11 @@ module.exports = function (mongoose) {
 		confirmationDate: { type: Date, required: true, default: Date.now() },
 
 		// Due date
-		dueDaysFromNow: { type: Number },
+		//dueDaysFromNow: { type: Number },
 		dueDate: { type: Date, required: true },
+
+		// Fulfillment date
+		fulfillmentDate: { type: Date },
 
 		// Promise type
 		type: { type: String, required: true, trim: true },

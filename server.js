@@ -26,6 +26,9 @@ var	https = require('https'),
 	app = express(),
 	server = http.createServer(app),
 
+// Validator
+	check = require('validator').check,
+
 // Mongoose
 	mongoose = require('mongoose'),
 
@@ -51,7 +54,7 @@ var	https = require('https'),
 	reminders = require('./app/jobs/reminder')(cron, Agreement, email, async, util, emails),
 
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails);
+	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails, check);
 
 
 ///////////////////

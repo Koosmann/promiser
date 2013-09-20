@@ -1,0 +1,20 @@
+<%= include indexHeader %>
+    <%= include header %>
+        <div id="content" ng-controller='Message'>
+
+            <div id="main" class="bg-grey set-left">        
+
+                <div class="borrow-form" ng-cloak>
+                    <span class='text-<%= data.status %> text-big'><%= data.headline %></span><br/>
+                    <span class='text-light'><%= data.message %></span>
+                </div>
+
+            </div><!-- /#main -->
+
+
+            <div id="aside" class="bg-grey set-right "></div><!-- /#aside -->
+
+        </div><!-- /#content -->   
+
+        <div id="footer"></div><!-- /#footer -->
+<%= include indexFooter %>
