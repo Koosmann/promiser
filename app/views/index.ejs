@@ -19,7 +19,7 @@
                             <span class='text-light'><b>& that's it</b> - once the recipient of the promises accepts, we'll take care of rest and remind you both when the due date approaches.</span>
                     </div>
                     <div ng-switch-default>
-                            <form name='{{ currentOption.name }}' action='/create' ng-submit='testSubmit()' method='post'>
+                            <form name='promise' action='/create' ng-submit='testSubmit()' method='post'>
                                 <input type='hidden' name='type' value='{{ currentOption.name }}' required />I, 
                                 
                                 <input p-input class='p-key-item' name='initiatorFirstName' ng-model='form.initiatorFirstName' placeholder='your first' type='text' required />

@@ -88,7 +88,7 @@ module.exports = function (util, config, crypto) {
 		receipt: {
 			toInitiator: function (agreement) {
 				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
-									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a></h1><br/>" + 
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a> / <a href='%s' style='text-decoration:none;color:#428bca;'>Create a new one</a></h1><br/>" + 
 									"This promise has been verified by %s & %s.", 
 									config.host,
 									agreement._id,
@@ -126,7 +126,7 @@ module.exports = function (util, config, crypto) {
 			},
 			toRecipient: function (agreement, daysLeft, dayUnit) {
 				return util.format(	"<h1 style='font-weight:normal;color:#111;'>%s has <span style='font-weight:bold;color:#428bca;'>%s %s</span> left to fulfill their promise to you.</h1>" +
-									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a> / <a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#428bca;'>Mark as fulfilled</a></h1><br/>" +
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a> / <a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#46D846;'>Mark as fulfilled</a></h1><br/>" +
 									"This promise has been verified by %s & %s.",
 									agreement.initiatorFirstName,
 									daysLeft,
@@ -144,7 +144,7 @@ module.exports = function (util, config, crypto) {
 			toInitiator: function (agreement) {
 				return util.format(	"<h1 style='font-weight:bold;color:#46D846;'>Promise fulfilled.</h1>" +
 									"<h1 style='font-weight:normal;color:#AAA;'>Way to go! %s just marked your promise as fulfilled.  Keep up the good work.</h1>" +
-									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a> / <a href='%s' style='text-decoration:none;color:#428bca;'>Make a new one</a></h1><br/>" +
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a> / <a href='%s' style='text-decoration:none;color:#428bca;'>Create a new one</a></h1><br/>" +
 									"This promise has been verified by %s & %s.",
 									agreement.recipientFirstName,
 									config.host,
