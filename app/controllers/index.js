@@ -184,7 +184,7 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, 
 				
 				// Need to some sort of preview/verifification for initiator
 
-				var subject = 'Please verify your email & confirm your promise', 
+				var subject = 'Please verify your email & confirm your promise to ' + agreement.recipientFirstName, 
 					text = 'Click here to confirm: ' + config.root + '/confirm/' + agreement._id,
 					html = emails.verification(agreement); 
 			
@@ -507,12 +507,13 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, 
 										return send500(res);
 									}
 
-									var subject = 'Promise confirmed!',
+									var initiatorSubject = 'Promise to ' + agreement.recipientFirstName + ' confirmed!',
+										recipientSubject = 'Promise from ' + agreement.initiatorFirstName + ' confirmed!',
 										text = 'This promise, ' + config.host + '/' + agreement._id + ', has been confirmed and needs to be fulfilled by: ' + agreement.dueDate,
 										initiatorHtml = emails.receipt.toInitiator(agreement),
 										recipientHtml = emails.receipt.toRecipient(agreement);
 
-									email.send([{email: agreement.recipientEmail, name: agreement.recipientFirstName + " " + agreement.recipientLastName}], 'hello@promiser.com', subject, text, recipientHtml, function (err, response){
+									email.send([{email: agreement.recipientEmail, name: agreement.recipientFirstName + " " + agreement.recipientLastName}], 'hello@promiser.com', recipientSubject, text, recipientHtml, function (err, response){
 										if (err) {
 											console.log("-------------------");
 											console.log("Error! >> " + err);
@@ -527,7 +528,7 @@ module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, 
 
 									});
 
-									email.send([{email: agreement.initiatorEmail, name: agreement.initiatorFirstName + " " + agreement.initiatorLastName }], 'hello@promiser.com', subject, text, initiatorHtml, function (err, response){
+									email.send([{email: agreement.initiatorEmail, name: agreement.initiatorFirstName + " " + agreement.initiatorLastName }], 'hello@promiser.com', initiatorSubject, text, initiatorHtml, function (err, response){
 										if (err) {
 											console.log("-------------------");
 											console.log("Error! >> " + err);

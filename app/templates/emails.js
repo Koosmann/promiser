@@ -28,14 +28,17 @@ module.exports = function (util, config, crypto) {
 	var promises = {
 		payment: {
 			content: "<h1 style='font-weight:normal;color:#111;'>I, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, owe <span style='font-weight:bold;color:#428bca;'>$%d</span> to you, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, and promise to pay you within <span style='font-weight:bold;color:#428bca;'>%s</span> %s.</h1><br/>",
+			question: "<h1 style='font-weight:normal;color:#111;'>Did <span style='font-weight:bold;color:#428bca;'>%s</span> pay you back your <span style='font-weight:bold;color:#428bca;'>$%s</span> yet?</h1>",
 			thing: 'amount'
 		},
 		product: {
 			content: "<h1 style='font-weight:normal;color:#111;'>I, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, am borrowing <span style='font-weight:bold;color:#428bca;'>%s</span> from you, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, and promise to return it to you within <span style='font-weight:bold;color:#428bca;'>%s</span> %s.</h1><br/>",
+			question: "<h1 style='font-weight:normal;color:#111;'>Did <span style='font-weight:bold;color:#428bca;'>%s</span> return your <span style='font-weight:bold;color:#428bca;'>%s</span> to you yet?</h1>",
 			thing: 'item'
 		},
 		service: {
 			content: "<h1 style='font-weight:normal;color:#111;'>I, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, am agreeing to <span style='font-weight:bold;color:#428bca;'>%s</span> for you, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, and promise to do so within <span style='font-weight:bold;color:#428bca;'>%s</span> %s.</h1><br/>",
+			question: "<h1 style='font-weight:normal;color:#111;'>Did <span style='font-weight:bold;color:#428bca;'>%s</span> <span style='font-weight:bold;color:#428bca;'>%s</span> for you yet?</h1>",
 			thing: 'service'
 		}
 	}
@@ -87,21 +90,27 @@ module.exports = function (util, config, crypto) {
 		},
 		receipt: {
 			toInitiator: function (agreement) {
-				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
+				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise to <span style='font-weight:bold;color:#428bca;'>%s</span> confirmed.</h1>" +
 									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a> / <a href='%s' style='text-decoration:none;color:#428bca;'>Create a new one</a></h1><br/>" + 
 									"This promise has been verified by %s & %s.", 
+									agreement.recipientFirstName,
 									config.host,
 									agreement._id,
 									agreement.initiatorEmail,
 									agreement.recipientEmail);
 			},
 			toRecipient: function (agreement) {
-				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
-									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a> / <a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#428bca;'>Mark as fulfilled</a></h1><br/>" + 
+				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise from <span style='font-weight:bold;color:#428bca;'>%s</span> confirmed.</h1>" +
+									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a></h1><br/>" +
+									promises[agreement.type].question + 
+									"<h1 style='font-weight:normal;'><a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#46D846;'> Mark as fulfilled</a></h1><br/>" + 
 									"<h1 style='font-weight:normal;color:#AAA;'>%s created this promise with <b>Promiser</b>. <a href='%s' style='text-decoration:none;color:#428bca;'>Create your own here</a></h1>" +
 									"This promise has been verified by %s & %s.", 
+									agreement.initiatorFirstName,
 									config.host,
 									agreement._id,
+									agreement.initiatorFirstName,
+									agreement[promises[agreement.type].thing],
 									config.host,
 									agreement._id,
 									crypto.createHmac('sha1', agreement.salt).update(agreement.id).digest('hex'),
@@ -127,12 +136,16 @@ module.exports = function (util, config, crypto) {
 			toRecipient: function (agreement, daysLeft, dayUnit) {
 				return util.format(	"<h1 style='font-weight:normal;color:#111;'>%s has <span style='font-weight:bold;color:#428bca;'>%s %s</span> left to fulfill their promise to you.</h1>" +
 									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See the promise here</a> / <a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#46D846;'>Mark as fulfilled</a></h1><br/>" +
+									promises[agreement.type].question + 
+									"<h1 style='font-weight:normal;'><a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#428bca;'> Mark as fulfilled</a></h1><br/>" + 
 									"This promise has been verified by %s & %s.",
 									agreement.initiatorFirstName,
 									daysLeft,
 									dayUnit,
 									config.host,
 									agreement._id,
+									agreement.initiatorFirstName,
+									agreement[promises[agreement.type].thing],
 									config.host,
 									agreement._id,
 									crypto.createHmac('sha1', agreement.salt).update(agreement.id).digest('hex'),
