@@ -98,12 +98,15 @@ module.exports = function (util, config, crypto) {
 			toRecipient: function (agreement) {
 				return util.format(	"<h1 style='font-weight:normal;color:#111;'>Promise confirmed.</h1>" +
 									"<h1 style='font-weight:normal;color:#AAA;'><a href='%s/%s' style='text-decoration:none;color:#428bca;'>See it here</a> / <a href='%s/%s/fulfill/%s' style='text-decoration:none;color:#428bca;'>Mark as fulfilled</a></h1><br/>" + 
+									"<h1 style='font-weight:normal;color:#AAA;'>%s created this promise with <b>Promiser</b>. <a href='%s' style='text-decoration:none;color:#428bca;'>Create your own here</a></h1>" +
 									"This promise has been verified by %s & %s.", 
 									config.host,
 									agreement._id,
 									config.host,
 									agreement._id,
 									crypto.createHmac('sha1', agreement.salt).update(agreement.id).digest('hex'),
+									agreement.initiatorFirstName,
+									config.host,
 									agreement.initiatorEmail,
 									agreement.recipientEmail);
 			}
