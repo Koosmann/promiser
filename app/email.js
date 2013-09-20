@@ -11,7 +11,7 @@ module.exports = function (mandrill, EmailLog) {
 			mandrill('/messages/send', {
 				message: {
 					to: to,
-					from_email: 'hello@promiser.com',
+					from_email: 'hello@promiserapp.com',
 					from_name: 'Promiser',
 					subject: subject,
 					text: text,
