@@ -2,7 +2,7 @@
 // Mandrill //
 //////////////
 
-module.exports = function (mandrill) {
+module.exports = function (mandrill, EmailLog) {
 	
 	return {
 		//send an e-mail
@@ -13,7 +13,6 @@ module.exports = function (mandrill) {
 					to: to,
 					from_email: 'hello@promiser.com',
 					from_name: 'Promiser',
-					bcc_address: 'koosmann@gmail.com',
 					subject: subject,
 					text: text,
 					html: html,
@@ -26,6 +25,18 @@ module.exports = function (mandrill) {
 					return callback(error, response);
 				} else {
 					console.log('SENT');
+
+					var emailLog = new EmailLog();
+
+					emailLog.toEmail = to;
+					emailLog.subject = subject || "";
+					emailLog.html = html || "";
+					emailLog.text = text || "";
+
+					emailLog.save(function (err) {
+						if (err) console.log("Error saving email log! - %s", err);
+						else console.log("Email log saved.");
+					})
 				
 					//everything's good, lets see what mandrill said
 					console.log(response);

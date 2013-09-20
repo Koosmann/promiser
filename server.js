@@ -32,15 +32,16 @@ var	https = require('https'),
 // Mongoose
 	mongoose = require('mongoose'),
 
+// Models
+	Agreement = require('./app/models/agreement')(mongoose),
+	EmailLog = require('./app/models/emailLog')(mongoose),
+
 // Mandrill
 	mandrill = require('node-mandrill')('htx3b7X3BJ3Z2hs-RSOmfg'),
-	email = require('./app/email')(mandrill),
+	email = require('./app/email')(mandrill, EmailLog),
 
 // Async
 	async = require('async'),
-
-// Models
-	Agreement = require('./app/models/agreement')(mongoose),
 
 // BCrypt
 	bcrypt = require('bcrypt'),
