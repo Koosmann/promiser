@@ -96,6 +96,7 @@ module.exports = function (util, config, crypto) {
 									agreement.recipientFirstName,
 									config.host,
 									agreement._id,
+									config.host,
 									agreement.initiatorEmail,
 									agreement.recipientEmail);
 			},
