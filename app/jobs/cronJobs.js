@@ -28,7 +28,7 @@ module.exports = function (cron, Agreement, email, async, util, emails) {
 	}
 
 	// Every day at 5am check what promises need to have reminders sent out
-	new cron('00 24 12 * * *', function () {  // Every day at 5AM
+	new cron('00 00 12 * * *', function () {  // Every day at 5AM
 	    Agreement.find({"confirmationStatus": "confirmed", dueDate : {"$gte": new Date() }}, function (err, agreements) {
 			if (err) {
 				console.log("Error finding agreements: %d", err);
