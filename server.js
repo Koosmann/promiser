@@ -55,7 +55,7 @@ var	https = require('https'),
 	//reminders = require('./app/jobs/reminder')(cron, Agreement, email, async, util, emails),
 
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails, check);
+	routes = require('./app/controllers')(config, Agreement, email, bcrypt, crypto, promises, util, emails, check);
 
 
 ///////////////////

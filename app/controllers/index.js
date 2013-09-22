@@ -2,7 +2,7 @@
 // Index //
 ///////////
 	
-module.exports = function (config, Agreement, email, reminders, bcrypt, crypto, promises, util, emails, check) {
+module.exports = function (config, Agreement, email, bcrypt, crypto, promises, util, emails, check) {
 	
 	function getDistinctAgreementCount(callback) {
 		Agreement.distinct('initiatorEmail', {confirmationStatus:'confirmed'}, function (err, results) {
