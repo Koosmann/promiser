@@ -4,6 +4,9 @@
 
 function Index($scope) {
 
+	$scope.form = {};
+	$scope.form.initiatorName = 'Test';
+
 	$scope.options = [
 		{
 			name: 'intro',

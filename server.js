@@ -29,6 +29,9 @@ var	https = require('https'),
 // Validator
 	check = require('validator').check,
 
+// Piler (Asset Management)
+	piler = require('piler'),
+
 // Mongoose
 	mongoose = require('mongoose'),
 
@@ -50,20 +53,16 @@ var	https = require('https'),
 	promises = require('./app/templates/promises')(util),
 	emails = require('./app/templates/emails')(util, config, crypto),
 
-// Cron Jobs
-	//cron = require('cron').CronJob,
-	//reminders = require('./app/jobs/reminder')(cron, Agreement, email, async, util, emails),
+// Express Settings
+	settings = require('./config/express')(app, express, config, piler, server),
 
 // Controllers
-	routes = require('./app/controllers')(config, Agreement, email, bcrypt, crypto, promises, util, emails, check);
+	routes = require('./app/controllers')(config, Agreement, email, bcrypt, crypto, promises, util, emails, check, settings);
 
 
 ///////////////////
 // Configuration //
 ///////////////////
-
-// Express Settings
-require('./config/express')(app, express, config);
 
 // Routing
 require('./config/routes')(app, routes);

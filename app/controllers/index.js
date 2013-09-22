@@ -2,7 +2,7 @@
 // Index //
 ///////////
 	
-module.exports = function (config, Agreement, email, bcrypt, crypto, promises, util, emails, check) {
+module.exports = function (config, Agreement, email, bcrypt, crypto, promises, util, emails, check, settings) {
 	
 	function getDistinctAgreementCount(callback) {
 		Agreement.distinct('initiatorEmail', {confirmationStatus:'confirmed'}, function (err, results) {
@@ -14,6 +14,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 
 	function send404(res) {
 		var data = {};
+		data.css = settings.clientCss.renderTags();
+		data.js = settings.clientJs.renderTags();
 
 		data.status = "negative";
 		data.headline = "Not found :(";
@@ -27,6 +29,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 
 	function send500(res) {
 		var data = {};
+		data.css = settings.clientCss.renderTags();
+		data.js = settings.clientJs.renderTags();
 
 		data.status = "negative";
 		data.headline = "Agh, something went wrong!";
@@ -47,6 +51,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 			console.log('homepage!');
 
 			var data = {};
+			data.css = settings.clientCss.renderTags();
+			data.js = settings.clientJs.renderTags();
 
 			getDistinctAgreementCount(function (count) {
 				data.count = count;
@@ -63,6 +69,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 
 			var data = {};
 			data.id = req.params.id;
+			data.css = settings.clientCss.renderTags();
+			data.js = settings.clientJs.renderTags();
 
 			Agreement.findById(req.params.id, function (err, agreement){
 				if (agreement && agreement.confirmationStatus != 'pending' && agreement.confirmationStatus != 'unverified' && agreement.confirmationStatus != 'cancelled' && agreement.confirmationStatus != 'rejected') {
@@ -201,6 +209,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						console.log("------------------------");
 
 						var data = {};
+						data.css = settings.clientCss.renderTags();
+						data.js = settings.clientJs.renderTags();
 
 						data.status = "positive";
 						data.headline = "Promise created.";
@@ -268,6 +278,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 										console.log("------------------------");
 
 										var data = {};
+										data.css = settings.clientCss.renderTags();
+										data.js = settings.clientJs.renderTags();
 
 										data.status = "positive";
 										data.headline = "Promise sent.";
@@ -288,6 +300,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "negative";
 							data.headline = "Promise already cancelled.";
@@ -304,6 +318,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "positive";
 							data.headline = "Promise sent.";
@@ -320,6 +336,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "negative";
 							data.headline = "Promise not accepted :(";
@@ -402,6 +420,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "positive";
 							data.headline = "Promise sent.";
@@ -418,6 +438,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "negative";
 							data.headline = "Promise already cancelled.";
@@ -434,6 +456,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 							console.log("-------------------");
 
 							var data = {};
+							data.css = settings.clientCss.renderTags();
+							data.js = settings.clientJs.renderTags();
 
 							data.status = "negative";
 							data.headline = "Promise not accepted :(";
@@ -541,6 +565,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 											console.log("-------------");
 
 											var data = {};
+											data.css = settings.clientCss.renderTags();
+											data.js = settings.clientJs.renderTags();
 
 											data.status = "positive";
 											data.headline = "Promise accepted.";
@@ -563,6 +589,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								// Load promise page
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "negative";
 								data.headline = "Promise rejected :(";
@@ -581,6 +609,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								// Load promise page
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "positive";
 								data.headline = "Promise confirmed.";
@@ -669,6 +699,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 									}
 
 									var data = {};
+									data.css = settings.clientCss.renderTags();
+									data.js = settings.clientJs.renderTags();
 
 									data.status = "negative";
 									data.headline = "Promise rejected :(";
@@ -688,6 +720,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								// Load promise page
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "negative";
 								data.headline = "Promise rejected :(";
@@ -706,6 +740,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								// Load promise page
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "positive";
 								data.headline = "Promise confirmed.";
@@ -811,6 +847,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 											console.log("-------------");
 
 											var data = {};
+											data.css = settings.clientCss.renderTags();
+											data.js = settings.clientJs.renderTags();
 
 											data.status = "positive";
 											data.headline = "Promise fulfilled :)";
@@ -833,6 +871,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								// Load promise page
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "negative";
 								data.headline = "Promise rejected :(";
@@ -849,6 +889,8 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								console.log("----------------------------");
 
 								var data = {};
+								data.css = settings.clientCss.renderTags();
+								data.js = settings.clientJs.renderTags();
 
 								data.status = "positive";
 								data.headline = "Promise already fulfilled!";
