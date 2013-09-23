@@ -62,7 +62,6 @@ module.exports = function (app, express, config, piler, server) {
 	    clientJs.addUrl("http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js");
 	    clientJs.addUrl("http://documentcloud.github.io/underscore/underscore-min.js");
 	    clientJs.addUrl("//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js");
-	    clientJs.addUrl("http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js");
 	    clientJs.addFile(config.root + "/public/assets/js/plugins.js");
 	    clientJs.addFile(config.root + "/public/assets/js/main.js");
 	    clientJs.addFile(config.root + "/public/assets/js/app.js");

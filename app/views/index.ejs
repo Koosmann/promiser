@@ -22,11 +22,11 @@
                             <form name='promise' action='/create' ng-submit='testSubmit()' method='post'>
                                 <input type='hidden' name='type' value='{{ currentOption.name }}' required />I, 
                                 
-                                <input p-input class='p-key-item' name='initiatorFirstName' ng-model='form.initiatorFirstName' placeholder='your first' type='text' required />
-                                <input p-input class='p-key-item' name='initiatorLastName' ng-model='form.initiatorLastName' placeholder='& last name' type='text' required />
+                                <input p-input class='p-key-item' name='initiatorFirstName' ng-model='$parent.form.initiatorFirstName' placeholder='your first' type='text' required />
+                                <input p-input class='p-key-item' name='initiatorLastName' ng-model='$parent.form.initiatorLastName' placeholder='& last name' type='text' required />
                                 
                                 <span class='p-key-item-group'>
-                                    (<input p-input class='p-key-item-light' name='initiatorEmail' ng-model='form.initiatorEmail' placeholder='your email' type='email' required />),
+                                    (<input p-input class='p-key-item-light' name='initiatorEmail' ng-model='$parent.form.initiatorEmail' placeholder='your email' type='email' required />),
                                 </span>  
                                 
                                 <span ng-switch='currentOption.name'>
@@ -34,28 +34,28 @@
                                         owe 
                                         <span class='p-key-item-group'>
                                             <span class='p-key-item' ng-show='form.amount'>$</span>
-                                            <input p-input p-int class='p-key-item' name='amount' ng-model='form.amount' placeholder='an amount' type='text' maxlength='13' required />
+                                            <input p-input p-int class='p-key-item' name='amount' ng-model='$parent.form.amount' placeholder='an amount' type='text' maxlength='13' required />
                                         </span> to 
                                     </span>
                                     <span ng-switch-when='product'>
                                         am borrowing 
                                         <span class='p-key-item-group'>
-                                            <input p-input class='p-key-item' name='item' ng-model='form.item' placeholder='an item' type='text' required />
+                                            <input p-input class='p-key-item' name='item' ng-model='$parent.form.item' placeholder='an item' type='text' required />
                                         </span> from 
                                     </span>
                                     <span ng-switch-when='service'>
                                         am agreeing to 
                                         <span class='p-key-item-group'>
-                                            <input p-input class='p-key-item' name='service' ng-model='form.service' placeholder='do a service' type='text' required />
+                                            <input p-input class='p-key-item' name='service' ng-model='$parent.form.service' placeholder='do a service' type='text' required />
                                         </span> for 
                                     </span>
                                 </span>
                                 
-                                <input p-input class='p-key-item' name='recipientFirstName' ng-model='form.recipientFirstName' placeholder='their first' type='text' required />
-                                <input p-input class='p-key-item' name='recipientLastName' ng-model='form.recipientLastName' placeholder='& last name' type='text' required />
+                                <input p-input class='p-key-item' name='recipientFirstName' ng-model='$parent.form.recipientFirstName' placeholder='their first' type='text' required />
+                                <input p-input class='p-key-item' name='recipientLastName' ng-model='$parent.form.recipientLastName' placeholder='& last name' type='text' required />
                                 
                                 <span class='p-key-item-group'>
-                                    (<input p-input class='p-key-item-light' name='recipientEmail' ng-model='form.recipientEmail' placeholder='their email' type='email' required />)
+                                    (<input p-input class='p-key-item-light' name='recipientEmail' ng-model='$parent.form.recipientEmail' placeholder='their email' type='email' required />)
                                 </span> 
 
                                 <span ng-switch='currentOption.name'>
@@ -71,7 +71,7 @@
                                 </span>
 
                                 <span class='p-key-item-group'>
-                                    <input p-input p-int p-not-zero class='p-key-item' name='dueDaysFromNow' ng-model='form.dueDaysFromNow' placeholder='##' type='text' maxlength='2' required /> {{ form.dueDaysFromNow|pluralizeDays }}.
+                                    <input p-input p-int p-not-zero class='p-key-item' name='dueDaysFromNow' ng-model='$parent.form.dueDaysFromNow' placeholder='##' type='text' maxlength='2' required /> {{ form.dueDaysFromNow|pluralizeDays }}.
                                 </span>
                                 <br /><br />
 
