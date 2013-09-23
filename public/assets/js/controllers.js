@@ -17,12 +17,12 @@ function Index($scope, $location) {
 		},
 		{
 			name: 'product',
-			icon: 'icon-trophy',
+			icon: 'icon-refresh',
 			active: false
 		},
 		{
 			name: 'service',
-			icon: 'icon-coffee',
+			icon: 'icon-star',
 			active: false
 		}
 	]
