@@ -56,7 +56,27 @@ promiser.directive('pInput', function ($timeout) {
             	prepTester()
             	testSubject.insertAfter(elm);
             	check() 
+                scope.$emit('pInput initiated');
             }, 0);
+        }
+    }
+});
+
+promiser.directive('pInputCloak', function ($filter) {
+
+    return {
+        restrict: 'A',
+        link: function (scope, elm, attrs, ctrl) {
+            var visibility = elm.css('visibility'),
+                numPInputs = $(elm).find("[p-input]").length,
+                numPInputInits = 0;
+            
+            elm.css('visibility', 'hidden');
+            
+            scope.$on('pInput initiated', function () {
+                if (numPInputInits == numPInputs) elm.css('visibility', visibility);
+                numPInputInits++;
+            });
         }
     }
 });

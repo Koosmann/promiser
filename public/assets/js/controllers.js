@@ -44,6 +44,7 @@ function Index($scope, $location) {
 
 		console.log(i);
 
+		console.log('LOCATION');
 		$location.path('/' + $scope.currentOption.name);
 		//$location.replace();
 		

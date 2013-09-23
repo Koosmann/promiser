@@ -5,8 +5,9 @@
             <div id="main" class="bg-grey set-left"> 
 
                 <ul class="nav nav-pills">
-                    <li ng-repeat='option in options' ng-class="{'active': option.active}" ng-click='chooseOption($index)'>
-                        <a href="#"><i class='{{ option.icon }}'></i></a>
+                    
+                    <li ng-repeat='option in options' ng-class="{'active': option.active}">
+                        <a href='' ng-href='/{{ option.name }}'><i class='{{ option.icon }}'></i></a>
                     </li>
                 </ul>        
 
@@ -18,7 +19,7 @@
                             <br/><br/>
                             <span class='text-light'><b>& that's it</b> - once the recipient of the promises accepts, we'll take care of rest and remind you both when the due date approaches.</span>
                     </div>
-                    <div ng-switch-default>
+                    <div ng-switch-default p-input-cloak>
                             <form name='promise' action='/create' ng-submit='testSubmit()' method='post'>
                                 <input type='hidden' name='type' value='{{ currentOption.name }}' required />I, 
                                 
