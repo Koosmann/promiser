@@ -44,7 +44,8 @@ function Index($scope, $location) {
 
 		console.log(i);
 
-		$location.path($scope.currentOption.name);
+		$location.path('/' + $scope.currentOption.name);
+		//$location.replace();
 		
 		if (!$scope.$$phase) $scope.$digest();
 	}
@@ -53,20 +54,29 @@ function Index($scope, $location) {
 		console.dir(document.forms);
 	}
 
-	switch ($location.path()) {
-		case '/payment':
-			$scope.chooseOption(1);
-			break;
-		case '/product':
-			$scope.chooseOption(2);
-			break;
-		case '/service':
-			$scope.chooseOption(3);
-			break;
-		default:
-			$scope.chooseOption(0);
-			break;
+	$scope.route = function () {
+		switch ($location.path()) {
+			case '/payment':
+				$scope.chooseOption(1);
+				break;
+			case '/product':
+				$scope.chooseOption(2);
+				break;
+			case '/service':
+				$scope.chooseOption(3);
+				break;
+			default:
+				$scope.chooseOption(0);
+				break;
+		}
 	}
+
+	$scope.$on("$locationChangeSuccess", function() {
+		console.log("route update");
+		$scope.route();
+	});
+
+	$scope.route();
 }
 
 function Agreement($scope) {
