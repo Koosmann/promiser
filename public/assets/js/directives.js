@@ -130,14 +130,11 @@ promiser.directive('uiValidateFormRequirements', function() {
                         field = ctrl.$error.required[i].$name;
                         ctrl[field].$dirty = 1;
                     }
-                    console.dir(ctrl);
 
                     if (ctrl.$error.required) scope.error = 'All fields are required :/';
                     else if (ctrl.$error.zero) scope.error = "Really? Within 0 days?";
                     else if (ctrl.$error.email) scope.error = "Those don't look like emails...";
                     else scope.error = null;
-
-                    console.dir(scope);
 
                     if (!scope.$$phase) scope.$digest();
                     

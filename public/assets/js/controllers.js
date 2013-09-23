@@ -2,16 +2,13 @@
 
 /* Controllers */
 
-function Index($scope) {
-
-	$scope.form = {};
-	$scope.form.initiatorName = 'Test';
+function Index($scope, $location) {
 
 	$scope.options = [
 		{
 			name: 'intro',
 			icon: 'icon-info',
-			active: true
+			active: false
 		},
 		{
 			name: 'payment',
@@ -30,26 +27,45 @@ function Index($scope) {
 		}
 	]
 
-	$scope.currentOption = $scope.options[0];
-	if (!$scope.$$phase) $scope.$digest();
+	//$scope.currentOption = $scope.options[0];
+	//if (!$scope.$$phase) $scope.$digest();
 
 	$scope.chooseOption = function (i) {
-		$scope.form = null;
-		$scope.currentOption.active = false;
+		//$scope.form = null;
+		if ($scope.form) {
+			$scope.form.amount = null;
+			$scope.form.item = null;
+			$scope.form.service = null;
+		}
+
+		if ($scope.currentOption) $scope.currentOption.active = false;
 		$scope.options[i].active = true;
 		$scope.currentOption = $scope.options[i];
 
-		console.log("BEFORE DIGEST");
-		console.dir(document.forms);
+		console.log(i);
+
+		$location.path($scope.currentOption.name);
 		
 		if (!$scope.$$phase) $scope.$digest();
-
-		console.log("AFTER DIGEST");
-		console.dir(document.forms);
 	}
 
 	$scope.testSubmit = function () {
 		console.dir(document.forms);
+	}
+
+	switch ($location.path()) {
+		case '/payment':
+			$scope.chooseOption(1);
+			break;
+		case '/product':
+			$scope.chooseOption(2);
+			break;
+		case '/service':
+			$scope.chooseOption(3);
+			break;
+		default:
+			$scope.chooseOption(0);
+			break;
 	}
 }
 

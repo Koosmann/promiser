@@ -15,6 +15,10 @@ module.exports = function (app, routes) {
 	app.get('/:id/fulfill/:hash', routes.fulfillAgreement);
 
 	app.get('/', routes.index);
+	app.get('/intro', routes.index);
+	app.get('/payment', routes.index);
+	app.get('/product', routes.index);
+	app.get('/service', routes.index);
 	app.get('/:id', routes.showAgreement);
 
 }
