@@ -24,6 +24,11 @@ function Index($scope, $location) {
 			name: 'service',
 			icon: 'icon-star',
 			active: false
+		},
+		{
+			name: 'appointment',
+			icon: 'icon-coffee',
+			active: false
 		}
 	]
 
@@ -56,7 +61,12 @@ function Index($scope, $location) {
 	}
 
 	$scope.route = function () {
-		switch ($location.path()) {
+		var location = _.findWhere($scope.options, { name: $location.path().replace('/', '')});
+
+		if (location === undefined) $scope.chooseOption(0);
+		else  $scope.chooseOption($scope.options.indexOf(location));
+
+		/*switch ($location.path()) {
 			case '/payment':
 				$scope.chooseOption(1);
 				break;
@@ -66,10 +76,13 @@ function Index($scope, $location) {
 			case '/service':
 				$scope.chooseOption(3);
 				break;
+			case '/appointment':
+				$scope.chooseOption(3);
+				break;
 			default:
 				$scope.chooseOption(0);
 				break;
-		}
+		}*/
 	}
 
 	$scope.$on("$locationChangeSuccess", function() {

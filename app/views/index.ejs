@@ -50,6 +50,12 @@
                                             <input p-input class='p-key-item' name='service' ng-model='$parent.form.service' placeholder='do a service' type='text' required />
                                         </span> for 
                                     </span>
+                                    <span ng-switch-when='appointment'>
+                                        am agreeing to 
+                                        <span class='p-key-item-group'>
+                                            <input p-input class='p-key-item' name='activity' ng-model='$parent.form.activity' placeholder='do something' type='text' required />
+                                        </span> with 
+                                    </span>
                                 </span>
                                 
                                 <input p-input class='p-key-item' name='recipientFirstName' ng-model='$parent.form.recipientFirstName' placeholder='their first' type='text' required />
@@ -67,6 +73,9 @@
                                          and promise to return it to them within 
                                     </span>
                                     <span ng-switch-when='service'>
+                                         and promise to do so within 
+                                    </span>
+                                    <span ng-switch-when='appointment'>
                                          and promise to do so within 
                                     </span>
                                 </span>

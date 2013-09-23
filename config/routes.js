@@ -19,6 +19,7 @@ module.exports = function (app, routes) {
 	app.get('/payment', routes.index);
 	app.get('/product', routes.index);
 	app.get('/service', routes.index);
+	app.get('/appointment', routes.index);
 	app.get('/:id', routes.showAgreement);
 
 }

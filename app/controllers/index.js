@@ -135,6 +135,9 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					case 'service':
 						check(req.body.service).notNull();
 						break;
+					case 'appointment':
+						check(req.body.activity).notNull();
+						break;
 				}
 
 				check(req.body.dueDaysFromNow).isInt().min(1).notNull();
@@ -165,6 +168,9 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					break;
 				case 'service':
 					agreement.service = req.body.service;
+					break;
+				case 'appointment':
+					agreement.activity = req.body.activity;
 					break;
 			}
 

@@ -25,6 +25,10 @@
 							am agreeing to 
 							<span class='p-key-item'>{{ agreementData.service }}</span> for
 						</span> 
+						<span ng-switch-when='appointment'>
+							am agreeing to 
+							<span class='p-key-item'>{{ agreementData.activity }}</span> with
+						</span> 
 					</span>
 					
 					<span class='p-key-item'>{{ agreementData.recipientFirstName }}</span> 
@@ -38,6 +42,9 @@
 							and promise to return it to them within 
 						</span>
 						<span ng-switch-when='service'>
+							and promise to do so within 
+						</span> 
+						<span ng-switch-when='appointment'>
 							and promise to do so within 
 						</span> 
 					</span>

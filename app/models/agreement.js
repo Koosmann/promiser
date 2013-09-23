@@ -36,6 +36,7 @@ module.exports = function (mongoose) {
 		amount: { type: Number, trim: true },
 		item: { type: String, trim: true },
 		service: { type: String, trim: true },
+		activity: { type: String, trim: true },
 
 		// Terms
 		//terms: { type: String, required: true, trim: true },

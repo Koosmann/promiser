@@ -40,6 +40,11 @@ module.exports = function (util, config, crypto) {
 			content: "<h1 style='font-weight:normal;color:#333;'>I, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, am agreeing to <span style='font-weight:bold;color:#428bca;'>%s</span> for you, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, and promise to do so within <span style='font-weight:bold;color:#428bca;'>%s</span> %s.</h1><br/>",
 			question: "<h1 style='font-weight:normal;color:#333;'>Did <span style='font-weight:bold;'>%s</span> <span style='font-weight:bold;'>%s</span> for you yet?</h1>",
 			thing: 'service'
+		},
+		appointment: {
+			content: "<h1 style='font-weight:normal;color:#333;'>I, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, am agreeing to <span style='font-weight:bold;color:#428bca;'>%s</span> with you, <span style='font-weight:bold;color:#428bca;'>%s %s</span>, and promise to do so within <span style='font-weight:bold;color:#428bca;'>%s</span> %s.</h1><br/>",
+			question: "<h1 style='font-weight:normal;color:#333;'>Did <span style='font-weight:bold;'>%s</span> <span style='font-weight:bold;'>%s</span> with you yet?</h1>",
+			thing: 'activity'
 		}
 	}
 
