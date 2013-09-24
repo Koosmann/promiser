@@ -4,6 +4,7 @@
 
 module.exports = function (path, port) {
 	rootPath = path.normalize(__dirname + '/..');
+	console.log(rootPath);
 	
 	return {
 		development: {
@@ -25,7 +26,7 @@ module.exports = function (path, port) {
 		production: {
 			db: process.env.MONGOHQ_URL,
 			root: rootPath,
-			host: rootPath,
+			host: process.env.APP_ROOT,
 			app: {
 				name: 'Promiser'
 			},

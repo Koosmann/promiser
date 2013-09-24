@@ -74,6 +74,6 @@ require('./config/mongoose')(mongoose, config);
 // Start Server //
 //////////////////
 
-server.listen(port, function(){
-	console.log("Express server listening on port %d in %s mode", this.address().port, env);
+server.listen(port, function(req){
+	console.log("Express server listening at %d in %s mode", this.address().port, env);
 });
