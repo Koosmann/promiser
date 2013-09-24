@@ -23,7 +23,7 @@ module.exports = function (path, port) {
 			},
 		},
 		production: {
-			db: '',
+			db: process.env.MONGOHQ_URL,
 			root: rootPath,
 			host: rootPath,
 			app: {

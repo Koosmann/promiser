@@ -102,7 +102,7 @@ module.exports = function (app, express, config, piler, server) {
 	  	app.use(express.logger('dev'));
 	});
 
-	app.configure('production', function(){
+	app.configure('staging', function(){
 	  	app.use(express.errorHandler());
 
 	  	var googleAnalytics = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\
@@ -115,6 +115,20 @@ module.exports = function (app, express, config, piler, server) {
 
 	  	clientJs.addRaw(googleAnalytics);
 	});
+
+	/* app.configure('production', function(){
+	  	app.use(express.errorHandler());
+
+	  	var googleAnalytics = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\
+\
+          ga('create', 'UA-44233777-1', 'promiserapp.com');\
+          ga('send', 'pageview');"
+
+	  	clientJs.addRaw(googleAnalytics);
+	}); */
 
 	return {
 		clientCss: clientCss,
