@@ -8,26 +8,31 @@ function Index($scope, $location) {
 		{
 			name: 'intro',
 			icon: 'icon-info',
+			message: "Introduction to <b>Promiser!</b>",
 			active: false
 		},
 		{
 			name: 'payment',
 			icon: 'icon-dollar',
+			message: "<b>Payment</b><br/><i>e.g. I owe so-and-so $5.</i>",
 			active: false
 		},
 		{
 			name: 'product',
 			icon: 'icon-refresh',
+			message: "<b>Product</b><br/><i>e.g. I borrowed a table and chairs from so-and-so.",
 			active: false
 		},
 		{
 			name: 'service',
 			icon: 'icon-star',
+			message: "<b>Service</b><br/><i>e.g. I'm going to do the dishes for so-and-so.",
 			active: false
 		},
 		{
 			name: 'appointment',
 			icon: 'icon-coffee',
+			message: "<b>Appointment</b><br/><i>e.g. I'm going to get coffee with so-and-so.",
 			active: false
 		}
 	]

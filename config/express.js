@@ -25,43 +25,18 @@ module.exports = function (app, express, config, piler, server) {
 
 		// Asset Management
 
-        //<link rel="stylesheet" href="/assets/css/normalize.css">
-        //<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        //<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-        //<link rel="stylesheet" href="/assets/css/main.css">
-
     	// CSS
     	clientCss.addUrl("//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
     	clientCss.addUrl("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 		clientCss.addFile(config.root + "/public/assets/css/normalize.css");
     	clientCss.addFile(config.root + "/public/assets/css/main.css");
 
-
-        //<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>        
-        //<script src="http://documentcloud.github.io/underscore/underscore-min.js"></script>
-        //<script src="/assets/js/plugins.js"></script>
-        //<script src="/assets/js/main.js"></script>
-
-        //<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
-        //<script src="/assets/js/app.js"></script>
-        //<script src="/assets/js/controllers.js"></script>
-        //<script src="/assets/js/directives.js"></script>
-        //<script src="/assets/js/filters.js"></script>
-
-        /*<script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-44233777-1', 'promiserapp.com');
-          ga('send', 'pageview');
-        </script>*/
-
 	    // JS
 	    clientJs.addUrl("http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js");
 	    clientJs.addUrl("http://documentcloud.github.io/underscore/underscore-min.js");
 	    clientJs.addUrl("//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js");
+		clientJs.addFile(config.root + "/public/assets/js/angular-ui/ui-bootstrap-custom-0.6.0.js");
+		clientJs.addFile(config.root + "/public/assets/js/angular-ui/ui-bootstrap-custom-tpls-0.6.0.js");
 	    clientJs.addFile(config.root + "/public/assets/js/plugins.js");
 	    clientJs.addFile(config.root + "/public/assets/js/main.js");
 	    clientJs.addFile(config.root + "/public/assets/js/app.js");
