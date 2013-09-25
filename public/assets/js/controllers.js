@@ -8,7 +8,13 @@ function Index($scope, $location) {
 		{
 			name: 'intro',
 			icon: 'icon-info',
-			message: "Introduction to <b>Promiser!</b>",
+			message: "Introduction<br/>to <b>Promiser!</b>",
+			active: false
+		},
+		{
+			name: 'appointment',
+			icon: 'icon-coffee',
+			message: "<b>Appointment</b><br/><i>e.g. I'm going to get coffee with so-and-so.",
 			active: false
 		},
 		{
@@ -20,19 +26,13 @@ function Index($scope, $location) {
 		{
 			name: 'product',
 			icon: 'icon-refresh',
-			message: "<b>Product</b><br/><i>e.g. I borrowed a table and chairs from so-and-so.",
+			message: "<b>Product</b><br/><i>e.g. I'm borrowing a table and chairs from so-and-so.",
 			active: false
 		},
 		{
 			name: 'service',
 			icon: 'icon-star',
 			message: "<b>Service</b><br/><i>e.g. I'm going to do the dishes for so-and-so.",
-			active: false
-		},
-		{
-			name: 'appointment',
-			icon: 'icon-coffee',
-			message: "<b>Appointment</b><br/><i>e.g. I'm going to get coffee with so-and-so.",
 			active: false
 		}
 	]
@@ -70,24 +70,6 @@ function Index($scope, $location) {
 
 		if (location === undefined) $scope.chooseOption(0);
 		else  $scope.chooseOption($scope.options.indexOf(location));
-
-		/*switch ($location.path()) {
-			case '/payment':
-				$scope.chooseOption(1);
-				break;
-			case '/product':
-				$scope.chooseOption(2);
-				break;
-			case '/service':
-				$scope.chooseOption(3);
-				break;
-			case '/appointment':
-				$scope.chooseOption(3);
-				break;
-			default:
-				$scope.chooseOption(0);
-				break;
-		}*/
 	}
 
 	$scope.$on("$locationChangeSuccess", function() {

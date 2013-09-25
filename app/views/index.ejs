@@ -6,7 +6,7 @@
 
                 <ul class="nav nav-pills">
                     
-                    <li style='margin-left: 2px;' ng-repeat='option in options' ng-class="{'active': option.active}" tooltip-html-unsafe='{{ option.message }}' tooltip-placement='top' tooltip-popup-delay='1000'>
+                    <li style='margin-left: 2px;' ng-repeat='option in options' ng-class="{'active': option.active}" tooltip-html-unsafe='{{ option.message }}' tooltip-placement='top' tooltip-popup-delay='500'>
                         <a href='' ng-href='/{{ option.name }}'><i class='{{ option.icon }}'></i></a>
                     </li>
                 </ul>        
