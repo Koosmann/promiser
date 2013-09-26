@@ -13,6 +13,16 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 	}
 
 	function send404(res) {
+		var message = {};
+
+		message.status = "negative";
+		message.headline = "Not found :(";
+		message.message = "We're sorry, we couldn't find anything!";
+
+		res.send(message, 404);
+	}
+
+	function render404(res) {
 		var data = {};
 		data.css = settings.clientCss.renderTags();
 		data.js = settings.clientJs.renderTags();
@@ -28,6 +38,16 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 	}
 
 	function send500(res) {
+		var message = {};
+
+		message.status = "negative";
+		message.headline = "Agh, something went wrong!";
+		message.message = "We're not quite sure what, but it was something!";
+
+		res.send(message, 500);
+	}
+
+	function render500(res) {
 		var data = {};
 		data.css = settings.clientCss.renderTags();
 		data.js = settings.clientJs.renderTags();
@@ -103,7 +123,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 			});
 
@@ -175,6 +195,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 			}
 
 			agreement.type = req.body.type;
+			agreement.creationDate = new Date();
 			
 			dueDate.setDate(dueDate.getDate() + parseInt(req.body.dueDaysFromNow, 10));
 			//agreement.dueDaysFromNow = parseInt(req.body.dueDaysFromNow, 10);
@@ -200,7 +221,9 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 
 				var subject = 'Please verify your email & confirm your promise to ' + agreement.recipientFirstName, 
 					text = 'Click here to confirm: ' + config.root + '/confirm/' + agreement._id,
-					html = emails.verification(agreement); 
+					html = emails.verification(agreement);
+
+				var message = {};
 			
 				email.send([{email: agreement.initiatorEmail, name: agreement.initiatorFirstName + " " + agreement.initiatorLastName }], 'hello@promiser.com', subject, text, html, function (err, response){
 					if (err) {
@@ -214,23 +237,25 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						console.log("Verification Email Sent!");
 						console.log("------------------------");
 
-						var data = {};
-						data.css = settings.clientCss.renderTags();
-						data.js = settings.clientJs.renderTags();
+						message.status = "positive";
+						message.headline = "Promise created.";
+						message.message = "Check your email for the link to verify this promise.";
 
-						data.status = "positive";
-						data.headline = "Promise created.";
-						data.message = "Check your email for the link to verify this promise.";
-
-						getDistinctAgreementCount(function (count) {
-							data.count = count;
-							res.render('message', {data: data});
-						});
+						res.send(message, 200);
 					}
 
 				});
 
 			});
+			
+			// When testing the front-end, comment out 'save' above and use the commented sectino below for the response
+			/*var message = {};
+			
+			message.status = "positive";
+			message.headline = "Promise created.";
+			message.message = "Check your email for the link to verify this promise.";
+
+			res.send(message, 200); */
 		},
 
 		////////////////////////
@@ -257,6 +282,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						case 'unverified':
 							
 							agreement.confirmationStatus = 'pending';
+							agreement.verificationDate = new Date();
 
 							agreement.save(function (err) {		
 								if (err) {
@@ -264,7 +290,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 									console.log("Error saving agreement! >> " + err);
 									console.log("-------------------");
 									
-									return send500(res);
+									return render500(res);
 								}
 								
 								var subject = util.format('%s %s has sent you a promise', agreement.initiatorFirstName, agreement.initiatorLastName),
@@ -277,7 +303,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 										console.log("Error! >> " + err);
 										console.log("-------------------");
 
-										return send500(res);						
+										return render500(res);						
 									} else {
 										console.log("------------------------");
 										console.log("Confirmation Email Sent!");
@@ -367,7 +393,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 			});
 		},
@@ -405,7 +431,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 									console.log("Error saving agreement! >> " + err);
 									console.log("-------------------");
 									
-									return send500(res);
+									return render500(res);
 								}
 								
 								var data = {};
@@ -487,7 +513,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 
 			});
@@ -534,7 +560,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 										console.log("Error saving agreement! >> " + err);
 										console.log("-------------------");
 										
-										return send500(res);
+										return render500(res);
 									}
 
 									var initiatorSubject = 'Promise to ' + agreement.recipientFirstName + ' confirmed!',
@@ -549,7 +575,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 											console.log("Error! >> " + err);
 											console.log("-------------------");
 
-											return send500(res);						
+											return render500(res);						
 										} else {
 											console.log("-------------");
 											console.log("Receipt Sent!");
@@ -564,7 +590,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 											console.log("Error! >> " + err);
 											console.log("-------------------");
 
-											return send500(res);						
+											return render500(res);						
 										} else {
 											console.log("-------------");
 											console.log("Receipt Sent!");
@@ -641,7 +667,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								console.log("This is an error :(");
 								console.log("-------------------");
 
-								send404(res);
+								render500(res);
 								break;
 						} 
 					} else {
@@ -649,14 +675,14 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						console.log("Unverified link :(");
 						console.log("-------------------");
 						
-						send404(res);
+						render404(res);
 					}
 				} else {
 					console.log("-------------------");
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 
 			});
@@ -701,7 +727,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 										console.log("Error saving agreement! >> " + err);
 										console.log("-------------------");
 										
-										return send500(res);
+										return render500(res);
 									}
 
 									var data = {};
@@ -772,7 +798,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								console.log("This is an error :(");
 								console.log("-------------------");
 
-								send404(res);
+								render500(res);
 								break;
 						} 
 					} else {
@@ -780,14 +806,14 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						console.log("Unverified link :(");
 						console.log("-------------------");
 						
-						send404(res);
+						render404(res);
 					}
 				} else {
 					console.log("-------------------");
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 
 			});
@@ -833,7 +859,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 										console.log("Error saving agreement! >> " + err);
 										console.log("-------------------");
 										
-										return send500(res);
+										return render500(res);
 									}
 
 									var subject = agreement.recipientFirstName + " marked your promise as fulfilled!",
@@ -846,7 +872,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 											console.log("Error! >> " + err);
 											console.log("-------------------");
 
-											return send500(res);						
+											return render500(res);						
 										} else {
 											console.log("-------------");
 											console.log("Fulfillment email Sent!");
@@ -912,7 +938,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 								console.log("This is an error :(");
 								console.log("-------------------");
 
-								send404(res);
+								render500(res);
 								break;
 						} 
 					} else {
@@ -920,14 +946,14 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 						console.log("Unverified link :(");
 						console.log("-------------------");
 						
-						send404(res);
+						render404(res);
 					}
 				} else {
 					console.log("-------------------");
 					console.log("No agreement found.");
 					console.log("-------------------");
 
-					send404(res);
+					render404(res);
 				}
 
 			});

@@ -6,7 +6,8 @@ promiser.directive('pInput', function ($timeout) {
 
 	return {
         restrict: 'A',
-        require: '^form',
+        require: 'ngModel',
+        priority: 1000,
         link: function (scope, elm, attrs, ctrl) { // scope - used for logic / elm - used for DOM manipulation (it's like a jQuery object) / attrs - used as options (they're all of the attributes on the tag this directive is attached too)
 			var minWidth, maxWidth, comfortZone, testSubject;
 
@@ -23,12 +24,13 @@ promiser.directive('pInput', function ($timeout) {
                     fontFamily: elm.css('fontFamily'),
                     fontWeight: elm.css('fontWeight'),
                     letterSpacing: elm.css('letterSpacing'),
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'pre'
                 })
             }
 
             function check() {
-        		var value = angular.equals(elm.val(), "") ? attrs.placeholder : elm.val();
+                console.log(elm.val());
+        		var value = angular.equals(elm.val(), '') ? attrs.placeholder : elm.val();
 
                 // Enter new content into testSubject
                 //var escaped = value.replace(/&/g, '&amp;').replace(/\s/g,'&nbsp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -48,11 +50,18 @@ promiser.directive('pInput', function ($timeout) {
 
             }
 
-            elm.bind('keyup keydown blur update', function () {
+            /*elm.bind('keyup keydown blur update', function () {
             	check();
+            });*/
+
+            ctrl.$parsers.unshift(function (viewValue) {
+                console.dir(ctrl);
+                console.dir(document.forms['promise']['type']);
+                check();
+                return viewValue;
             });
 
-            setTimeout(function () { 
+            $timeout(function () { 
             	prepTester()
             	testSubject.insertAfter(elm);
             	check() 
@@ -81,30 +90,51 @@ promiser.directive('pInputCloak', function ($filter) {
     }
 });
 
-promiser.directive('pInt', function ($filter) {
+promiser.directive('pNumber', function ($filter) {
 
 	// Only allow integers
 
 	return {
         restrict: 'A',
         require: 'ngModel',
+        priority: 0,
+        scope: true,
         link: function (scope, elm, attrs, ctrl) {
 
+            if (attrs.pNumber !== undefined) {
+                switch (attrs.pNumber) {
+                    case 'dollars' :
+                        scope.unit = '$';
+                        break;
+                    default:
+                        scope.unit = '';
+                        break;
+                }
+            }
+
             ctrl.$parsers.unshift(function(viewValue) {
+                console.log("NUMBER PARSERS - %s", viewValue);
 
             	if (viewValue) {
                     if (viewValue.match(/[0-9]/g) == null) {
-                        ctrl.$viewValue = "";
+                        viewValue = "";
+                        ctrl.$viewValue = viewValue;
                         ctrl.$render();
                     } else {
-    	                ctrl.$viewValue = $filter('number')(viewValue.match(/[0-9]/g).join(""));
+                        viewValue = viewValue.match(/[0-9]/g).join("");
+    	                ctrl.$viewValue = scope.unit + $filter('number')(viewValue);
     	                ctrl.$render();
                     }
 
 	                setTimeout(function () { console.dir(ctrl) }, 0);
 
-	                return ctrl.$viewValue;
+	                return viewValue;
 	            }
+            });
+
+            ctrl.$formatters.push(function(modelValue) {
+                console.log("NUMBER FORMATTERS - %s", modelValue);
+                return modelValue ? scope.unit + $filter('number')(modelValue) : null;
             });
 		}
 	}
@@ -117,6 +147,7 @@ promiser.directive('pNotZero', function ($filter) {
     return {
         restrict: 'A',
         require: 'ngModel',
+        priority: 100,
         link: function (scope, elm, attrs, ctrl) {
 
             ctrl.$parsers.unshift(function(viewValue) {
@@ -133,7 +164,7 @@ promiser.directive('pNotZero', function ($filter) {
     }
 });
 
-promiser.directive('uiValidateFormRequirements', function() {
+promiser.directive('pValidateFormRequirements', function() {
     return {
         require: '^form',
         link: function(scope, elm, attrs, ctrl) {

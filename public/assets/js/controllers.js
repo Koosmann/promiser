@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function Index($scope, $location) {
+function Index($scope, $location, $http) {
 
 	$scope.options = [
 		{
@@ -41,18 +41,25 @@ function Index($scope, $location) {
 	//if (!$scope.$$phase) $scope.$digest();
 
 	$scope.chooseOption = function (i) {
-		//$scope.form = null;
-		if ($scope.form) {
-			$scope.form.amount = null;
-			$scope.form.item = null;
-			$scope.form.service = null;
-		}
+		$scope.message = null; // Clear message;
 
-		if ($scope.currentOption) $scope.currentOption.active = false;
+		if ($scope.currentOption && $scope.currentOption.active !== undefined) $scope.currentOption.active = false;
 		$scope.options[i].active = true;
 		$scope.currentOption = $scope.options[i];
+		console.dir($scope);
+		console.dir($scope.$parent);
+		console.dir($scope.$parent.$parent);
 
-		console.log(i);
+		if ($scope.form) {
+			console.dir($scope.form);
+			//$scope.form.amount = null;
+			$scope.form.item = null;
+			$scope.form.service = null;
+
+			$scope.form.type = $scope.currentOption.name;
+		}
+
+		console.dir($scope);
 
 		console.log('LOCATION');
 		$location.path('/' + $scope.currentOption.name);
@@ -61,8 +68,21 @@ function Index($scope, $location) {
 		if (!$scope.$$phase) $scope.$digest();
 	}
 
-	$scope.testSubmit = function () {
-		console.dir(document.forms);
+	$scope.submit = function (form) {
+		$http.post('/create', form).
+		success(function(data, status) {
+			data.name = 'message';
+			$scope.message = data;
+			$scope.form = null; // Clear form
+			console.log($scope);
+		}).
+		error(function(data, status) {
+			data.name = 'message';
+			$scope.message = data;
+			$scope.form = null; // Clear form
+			console.log($scope);
+
+		});
 	}
 
 	$scope.route = function () {

@@ -19,8 +19,14 @@ module.exports = function (mongoose) {
 		recipientLastName: { type: String, required: true, trim: true },
 		recipientEmail: { type: String, lowercase: true, required: true, trim: true },
 
+		// Creation date
+		creationDate: { type: Date, required: true, default: Date.now() },
+
+		// Verification date
+		verificationDate: { type: Date },
+
 		// Confirmation date
-		confirmationDate: { type: Date, required: true, default: Date.now() },
+		confirmationDate: { type: Date },
 
 		// Due date
 		//dueDaysFromNow: { type: Number },
