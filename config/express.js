@@ -37,12 +37,10 @@ module.exports = function (app, express, config, piler, server) {
 	    clientJs.addUrl("//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js");
 		clientJs.addFile(config.root + "/public/assets/js/angular-ui/ui-bootstrap-custom-0.6.0.js");
 		clientJs.addFile(config.root + "/public/assets/js/angular-ui/ui-bootstrap-custom-tpls-0.6.0.js");
-	    clientJs.addFile(config.root + "/public/assets/js/plugins.js");
-	    clientJs.addFile(config.root + "/public/assets/js/main.js");
-	    clientJs.addFile(config.root + "/public/assets/js/app.js");
-	    clientJs.addFile(config.root + "/public/assets/js/controllers.js");
-	    clientJs.addFile(config.root + "/public/assets/js/directives.js");
-	    clientJs.addFile(config.root + "/public/assets/js/filters.js");
+	    clientJs.addFile(config.root + "/public/assets/js/app/app.js");
+	    clientJs.addFile(config.root + "/public/assets/js/app/controllers.js");
+	    clientJs.addFile(config.root + "/public/assets/js/app/directives.js");
+	    clientJs.addFile(config.root + "/public/assets/js/app/filters.js");
 	    		
 		// Static Files
 		app.use('/assets', express.static(config.root + '/public/assets'));

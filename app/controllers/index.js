@@ -102,7 +102,7 @@ module.exports = function (config, Agreement, email, bcrypt, crypto, promises, u
 					console.log("DATE COMPARISON");
 					console.dir(now);
 					console.dir(agreement.dueDate);
-					if (agreement.dueDate < now) agreement.confirmationStatus = 'overdue';
+					if (agreement.dueDate < now && agreement.confirmationStatus != 'fulfilled') agreement.confirmationStatus = 'overdue';
 
 					data.agreement = JSON.stringify(agreement);
 
