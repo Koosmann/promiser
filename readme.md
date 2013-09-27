@@ -2,18 +2,17 @@
 
 Front-end:
 
-* FINISH WRITING UNIT TESTS (marcus)
-* REGISTER APP WITH FACEBOOK (marcus)
-
-* ADD GA EVENTS (wok)
-* ORGANIZE DEPENDENCIES WITH BOWER (wok)
-* ADD 'SHARE TO FACEBOOK' CHECKBOX (wok)
-* ADD CSS TRANSITIONS (wok)
+- [ ] FINISH WRITING UNIT TESTS (@koosmann)
+- [ ] REGISTER APP WITH FACEBOOK (@koosmann)
+- [ ] ADD GA EVENTS (@mantone)
+- [ ] ORGANIZE DEPENDENCIES WITH BOWER (@mantone)
+- [ ] ADD 'SHARE TO FACEBOOK' CHECKBOX (@mantone)
+- [ ] ADD CSS TRANSITIONS (@mantone)
 
 Back-end:
 
-* SET UP UNIT TESTS (marcus)
-* ADD DEFERRED 'SHARE TO FACEBOOK' ACTION (marcus)
+- [ ] SET UP UNIT TESTS (@koosmann)
+- [ ] ADD DEFERRED 'SHARE TO FACEBOOK' ACTION (@koosmann)
 
 
 ## Installation
