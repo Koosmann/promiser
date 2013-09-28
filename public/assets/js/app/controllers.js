@@ -99,7 +99,10 @@ function Index($window, $scope, $location, $http) {
 		console.log("route update");
 		$scope.route();
 
-		if (ga === undefined) ga.push(['_trackPageview', $location.path()]);
+		if (ga === undefined) {
+			console.log("GA - %s", $location.path());
+			ga.push(['_trackPageview', $location.path()]);
+		}
 	});
 
 	$scope.route();
