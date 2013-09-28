@@ -84,7 +84,9 @@ module.exports = function (app, express, config, piler, server) {
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\
 \
           ga('create', 'UA-44233777-1', 'promiserapp.com');\
-          ga('send', 'pageview');"
+          ga('send', 'pageview');\
+\
+          window.ga = ga;"
 
 	  	clientJs.addRaw(googleAnalytics);
 	});
