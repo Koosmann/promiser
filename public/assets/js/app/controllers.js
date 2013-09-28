@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function Index($scope, $location, $http) {
+function Index($window, $scope, $location, $http) {
 
 	$scope.options = [
 		{
@@ -98,6 +98,8 @@ function Index($scope, $location, $http) {
 	$scope.$on("$locationChangeSuccess", function() {
 		console.log("route update");
 		$scope.route();
+
+		if (ga === undefined) ga.push(['_trackPageview', $location.path()]);
 	});
 
 	$scope.route();
