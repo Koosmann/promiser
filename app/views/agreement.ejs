@@ -49,7 +49,7 @@
 						</span> 
 					</span>
 
-					<span class='p-key-item'>{{ agreementData.dueDate|timeToGo }}</span> 
+					<span class='p-key-item'>{{ agreementData.dueDate|daysToGo }}</span> 
 
 					{{ agreementData.dueDate|daysToGo|pluralizeDays }}.
 
@@ -57,10 +57,10 @@
 
 					<span ng-switch='agreementData.confirmationStatus'>
 						<span ng-switch-when='fulfilled' class='text-positive'>
-							This promise was fulfilled {{ agreementData.fulfillmentDate|daysAgo }} {{ agreementData.fulfillmentDate|daysAgo|pluralizeDays }} ago!
+							This promise was fulfilled {{ agreementData.fulfillmentDate|timeAgo }}!
 						</span>
 						<span ng-switch-when='overdue' class='text-negative'>
-							Promise overdue by {{ agreementData.dueDate|timeToGo }}! 
+							Promise overdue by {{ agreementData.dueDate|daysToGo }} {{ agreementData.dueDate|daysToGo|pluralizeDays }}! 
 						</span>
 					</span>
 
