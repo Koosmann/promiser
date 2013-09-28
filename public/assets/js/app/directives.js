@@ -16,6 +16,8 @@ promiser.directive('pInput', function ($timeout) {
             // attrs - all of the attributes on the tag this directive is attached too
             // ctrl - in this case, ngModel, is used to access the parsers, which filter all input
 
+            console.log("PINPUT");
+
 			var minWidth, maxWidth, comfortZone, testSubject;
 
 			function prepTester() {
@@ -89,12 +91,14 @@ promiser.directive('pInputCloak', function ($filter) {
             scope.numPInputInits = 0;
             
             scope.hide = function () { elm.css('visibility', 'hidden'); }
-            scope.revert = function () { elm.css('visibility', scope.visibility); }
+            scope.revert = function (visibility) { elm.css('visibility', visibility); }
             
             scope.$on('pInput initiated', function () {
-                if (scope.numPInputInits == scope.numPInputs) scope.revert();
+                if (scope.numPInputInits == scope.numPInputs) scope.revert(scope.visibility);
                 scope.numPInputInits++;
             });
+
+            if (!scope.$$phase) scope.$digest();
 
             scope.hide();
         }

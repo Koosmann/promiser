@@ -14,18 +14,18 @@ describe('Directive', function() {
 	describe('pInputCloak', function() {
 		var form, scope, element;
 
-		beforeEach(inject(function(pNumberDirective, pInputDirective, $compile, $rootScope) {
+		beforeEach(inject(function(pInputCloakDirective, pInputDirective, $compile, $rootScope) {
 		    element = angular.element(
-				'<div p-input-cloak>' +
-					'<input p-input ng-model="model.name" name="name" placeholder="name" />' +
-					'<input p-input ng-model="model.email" name="email" />' +
-					'<input p-input ng-model="model.password" name="password" />' +
+				'<div p-input-cloak style="visibility:visible;">' +
+					'<input p-input ng-model="model.name" name="name" value="name" />' +
+					'<input p-input ng-model="model.email" name="email" value="email" />' +
+					'<input p-input ng-model="model.password" name="password" value="password" />' +
 				'</div>'
 			);
 
 			scope = $rootScope;
 			scope.model = { name: null, email: null, password: null };
-			scope.$apply();
+			scope.$digest();
 		    $compile(element)(scope);
 
 		    // Set up spies
@@ -37,6 +37,10 @@ describe('Directive', function() {
 		    element = null;
 		});
 
+		it("should store the elements original state of visibility", inject(function() {
+			expect(scope.visibility).toBe('visible');
+		}));
+
 		it("should hide element immediately", inject(function() {
 			expect(scope.hide).toHaveBeenCalled();
 		}));
@@ -47,8 +51,8 @@ describe('Directive', function() {
 			expect(scope.numPInputInits).toBe(3);
 		}));
 
-		it("should unhide element when all pInputs are initalized", inject(function() {
-			
+		it("should revert element to original visibility when all pInputs are initalized", inject(function() {
+			expect(scope.revert).toHaveBeenCalledWith(scope.visibility);
 		}));
 	});
 

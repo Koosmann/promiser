@@ -71,6 +71,9 @@ function Index($scope, $location, $http) {
 	$scope.submit = function (form) {
 		$http.post('/create', form).
 		success(function(data, status) {
+			
+			// Add GA confirmation event here...
+
 			data.name = 'message';
 			$scope.message = data;
 			$scope.form = null; // Clear form
