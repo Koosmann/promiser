@@ -186,4 +186,8 @@ input, .nav, .nav *, * {
     font-size: 24px;
   }
 
+  .nav li {
+    width: 50px;
+  }
+
 }

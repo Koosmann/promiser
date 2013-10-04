@@ -12,7 +12,7 @@ describe('Directive', function() {
 	});
 
 	describe('pInputCloak', function() {
-		var form, scope, element;
+		var form, scope, element, flag;
 
 		beforeEach(inject(function(pInputCloakDirective, pInputDirective, $compile, $rootScope) {
 		    element = angular.element(
@@ -26,11 +26,8 @@ describe('Directive', function() {
 			scope = $rootScope;
 			scope.model = { name: null, email: null, password: null };
 			scope.$digest();
-		    $compile(element)(scope);
 
-		    // Set up spies
-		    spyOn(scope, 'hide');
-		    spyOn(scope, 'revert');
+		    $compile(element)(scope);
 		}));
 
 		afterEach(function() {
@@ -41,18 +38,34 @@ describe('Directive', function() {
 			expect(scope.visibility).toBe('visible');
 		}));
 
+		it("should store the number of pInput elements", inject(function() {
+			expect(scope.numPInputs).toBe(3);
+		}));
+
 		it("should hide element immediately", inject(function() {
-			expect(scope.hide).toHaveBeenCalled();
+			//spyOn(scope, 'revert').andCallThrough();  // This is already created too late... waiting for a SO answer...
+
+			expect(scope.numPInputInits).toBe(0);
+			//expect(scope.hide).toHaveBeenCalled();
+			expect(element.css('visibility')).toBe('hidden');
 		}));
 
 		it("should keep count of how many pInputs are initalized", inject(function() {
-			console.log(scope);
 			expect(scope.numPInputs).toBe(3);
-			expect(scope.numPInputInits).toBe(3);
 		}));
 
 		it("should revert element to original visibility when all pInputs are initalized", inject(function() {
-			expect(scope.revert).toHaveBeenCalledWith(scope.visibility);
+			spyOn(scope, 'revert').andCallThrough();
+
+			waitsFor(function () {
+				return (scope.numPInputInits == scope.numPInputs);
+			}, 'wait for pInputs to initialize', 1000);
+
+			runs(function () {
+				expect(scope.numPInputInits).toBe(3);
+				expect(scope.revert).toHaveBeenCalledWith(scope.visibility);
+				expect(element.css('visibility')).toBe('visible');
+			});
 		}));
 	});
 

@@ -24,7 +24,7 @@ promiser.directive('pInput', function ($timeout) {
 				minWidth = 10 || elm.width();
 				maxWidth = 400;
 				comfortZone = 1;
-                testSubject = $('<tester/>').css({
+                testSubject = angular.element('<tester/>').css({
                     position: 'absolute',
                     top: -9999,
                     left: -9999,
@@ -38,6 +38,7 @@ promiser.directive('pInput', function ($timeout) {
             }
 
             function check() {
+                console.log("PINPUT1");
                 console.log(elm.val());
         		var value = angular.equals(elm.val(), '') ? (angular.equals(attrs.placeholder, undefined) ? '' : attrs.placeholder) : elm.val();
 
@@ -46,9 +47,9 @@ promiser.directive('pInput', function ($timeout) {
                 testSubject.html(value);
 
                 // Calculate new width + whether to change
-                var testerWidth = testSubject.width(),
+                var testerWidth = testSubject.width,
                     newWidth = (testerWidth + comfortZone) >= minWidth ? testerWidth + comfortZone : minWidth,
-                    currentWidth = elm.width(),
+                    currentWidth = elm.width,
                     isValidWidthChange = (newWidth < currentWidth && newWidth >= minWidth)
                                          || (newWidth > minWidth && newWidth < maxWidth);
 
@@ -69,9 +70,9 @@ promiser.directive('pInput', function ($timeout) {
 
             // This timeout of 0 is weird workaround, but it works...
             // Otherwise, the DOM won't quite be ready
-            $timeout(function () { 
+            setTimeout(function () { 
             	prepTester()
-            	testSubject.insertAfter(elm);
+            	elm.after(testSubject);
             	check() 
                 scope.$emit('pInput initiated');
             }, 0);
@@ -87,20 +88,25 @@ promiser.directive('pInputCloak', function ($filter) {
         restrict: 'A',
         link: function (scope, elm, attrs, ctrl) {
             scope.visibility = elm.css('visibility');
-            scope.numPInputs = elm.find("[p-input]").length;
+            scope.numPInputs = elm.children("[p-input]").length;
             scope.numPInputInits = 0;
             
-            scope.hide = function () { elm.css('visibility', 'hidden'); }
-            scope.revert = function (visibility) { elm.css('visibility', visibility); }
+            scope.hide = function () { 
+                console.log("HIDE");
+                elm.css('visibility', 'hidden'); }
+            scope.revert = function (visibility) { 
+                console.log("REVERT");
+                elm.css('visibility', visibility); }
             
             scope.$on('pInput initiated', function () {
-                if (scope.numPInputInits == scope.numPInputs) scope.revert(scope.visibility);
                 scope.numPInputInits++;
+                if (scope.numPInputInits == scope.numPInputs) scope.revert(scope.visibility);
+                console.log("pInput initiated - " + scope.numPInputInits + " - " + scope.numPInputs);
             });
 
-            if (!scope.$$phase) scope.$digest();
-
             scope.hide();
+
+            if (!scope.$$phase) scope.$digest();
         }
     }
 });
